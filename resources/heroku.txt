@@ -1,0 +1,9 @@
+Host: ec2-23-23-36-227.compute-1.amazonaws.com
+Database: de5v20hco2dcch
+User: twbdpvbahecydw
+Port: 5432
+Password: db732cf7558db10d97218624e8a46c914e6ed3cc49755385546271c8477d9353
+URI: postgres://twbdpvbahecydw:db732cf7558db10d97218624e8a46c914e6ed3cc49755385546271c8477d9353@ec2-23-23-36-227.compute-1.amazonaws.com:5432/de5v20hco2dcch
+Heroku CLI: heroku pg:psql postgresql-corrugated-54124 --app proyecto-cvds-3sd
+
+url ec2-23-23-36-227.compute-1.amazonaws.com:5432/de5v20hco2dcch
