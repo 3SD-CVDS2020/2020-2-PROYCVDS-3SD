@@ -1,0 +1,9 @@
+ Create table usuarios (
+	usuario VARCHAR(50) NOT NULL, 
+	estado  NOT NULL, 
+	correo VARCHAR(50) NOT NULL, 
+	contraseña, 
+	carnet NUMBER(7) NOT NULL, 
+	semestre 
+ ); 
+ 
