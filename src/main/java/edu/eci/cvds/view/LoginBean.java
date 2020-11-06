@@ -27,14 +27,6 @@ public class LoginBean extends BasePageBean{
     private Boolean remember;
 
     public void login() throws IOException, PersistenceException{
-    	System.out.println("COMO SE SI ENTRO");
-    	System.out.println("COMO SE SI ENTRO");
-    	System.out.println("COMO SE SI ENTRO");
-    	System.out.println("COMO SE SI ENTRO");
-    	System.out.println("COMO SE SI ENTRO");
-    	System.out.println("COMO SE SI ENTRO");
-    	System.out.println("COMO SE SI ENTRO");
-    	System.out.println("COMO SE SI ENTRO");
         boolean isLogger = sessionLogger.isLogged();
         if(!isLogger){
             sessionLogger.login(correo, password, false);
