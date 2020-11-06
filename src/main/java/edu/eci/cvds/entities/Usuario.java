@@ -5,19 +5,20 @@ public class Usuario{
 	private String usuario;
 	private boolean estado;
 	private String correo;
-	private String contrasena;
+	private String clave;
 	private String carnet;
 	private String semestre;
+	
 	
 	public Usuario(){
 		
 	}
 	
-	public Usuario(String usuario, boolean estado, String correo, String contrasena, String carnet, String semestre){
+	public Usuario(String usuario, boolean estado, String correo, String clave, String carnet, String semestre){
 		this.usuario = usuario;
 		this.estado = estado;
 		this.correo = correo;
-		this.contrasena = contrasena;
+		this.clave = clave;
 		this.carnet = carnet;
 		this.semestre = semestre;
 	}
@@ -35,7 +36,7 @@ public class Usuario{
 	}
 	
 	public String getContrasena(){
-		return contrasena;
+		return clave;
 	}
 	
 	public String getCarnet(){
@@ -58,8 +59,8 @@ public class Usuario{
 		this.correo = correo;
 	}
 	
-	public void setContrasena(String contrasena){
-		this.contrasena = contrasena;
+	public void setContrasena(String clave){
+		this.clave = clave;
 	}
 	
 	public void setCarnet(String carnet){

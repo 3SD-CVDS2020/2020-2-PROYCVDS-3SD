@@ -1,8 +1,8 @@
 CREATE TABLE usuario (
-	usuario VARCHAR(50) NOT NULL, 
+	id VARCHAR(50) NOT NULL, 
 	estado BOOLEAN NOT NULL, 
 	correo VARCHAR(50) NOT NULL, 
-	contraseña VARCHAR(12) NOT NULL, 
+	clave VARCHAR(12) NOT NULL, 
 	carnet NUMBER(7) NOT NULL, 
 	semestre NUMBER(2) NOT NULL
  ); 
@@ -34,7 +34,7 @@ CREATE TABLE usuario (
 ----------------PK----------------
 ALTER TABLE usuario
 ADD CONSTRAINT Pk_usuario
-PRIMARY KEY (usuario);
+PRIMARY KEY (id);
 
 ALTER TABLE equipo
 ADD CONSTRAINT Pk_equipos_id

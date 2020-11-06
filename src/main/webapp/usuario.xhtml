@@ -96,14 +96,14 @@
             <h:form id="Registrolol">
               <div class="form-row000">
                 <div class="col-lg-4 col-md-6 form-group1">
-                  <p:inputText  name="name" class="form-control" id="userName" placeholder="nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" binding="#{userName}"/>
+                  <p:inputText  class="form-control" type="String" id="correo"  placeholder="Correo@correo.com" value="#{LoginBean.correo}"/>
                   <div class="validate1"></div>
                 </div>
               </div>
 
               <div class="form-row111">
                 <div class="col-lg-4 col-md-6 form-group1">
-                  <p:inputText  name="clave" class="form-control" id="contrasena" placeholder="contrasena" data-rule="minlen:4" data-msg="Por favor ingrese una contrasena" binding="#{clave}"/>
+                  <p:inputText   class="form-control" id="clave" placeholder="clave" type="String" value="#{LoginBean.password}" />
                   <div class="validate1"></div>
                 </div>
               </div>
@@ -119,7 +119,7 @@
               </div>
 
               <div class="text-center11">
-                <h:commandLink   action="#{controller.logIn(userName.value,clave.value)}" value="Iniciar Sesion" style="font-size:larger"/>
+                <p:commandButton   actionListener="#{LoginBean.login}" value="Iniciar Sesion" style="font-size:larger"/>
               </div>
             </h:form>
 

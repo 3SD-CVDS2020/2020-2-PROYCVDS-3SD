@@ -27,6 +27,21 @@
             <artifactId>primefaces</artifactId>
             <version>5.0</version>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-web -->
+		<dependency>
+		    <groupId>org.apache.shiro</groupId>
+		    <artifactId>shiro-web</artifactId>
+		    <version>1.7.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-core -->
+		<dependency>
+		    <groupId>org.apache.shiro</groupId>
+		    <artifactId>shiro-core</artifactId>
+		    <version>1.7.0</version>
+		</dependency>
+		
+        
 
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -140,7 +155,7 @@
                         </goals>
                         <configuration>
                             <srcFiles>                                
-                                <srcFile>tables.sql</srcFile>                                
+                                <srcFile>tablas.sql</srcFile>                                
                             </srcFiles>
                         </configuration>
                     </execution>
