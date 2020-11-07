@@ -1,0 +1,11 @@
+
+machine:
+  java:
+    version: oraclejdk8
+
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: 2020-2-PROYCVDS-3SD
+      

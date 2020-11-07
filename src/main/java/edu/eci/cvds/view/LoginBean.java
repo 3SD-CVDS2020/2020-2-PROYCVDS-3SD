@@ -35,8 +35,6 @@ public class LoginBean extends BasePageBean{
         }
     }
 
-    
-
     public void existingSession() throws IOException{
         FacesContext facesContext = FacesContext.getCurrentInstance();
         facesContext.getExternalContext().redirect("");
