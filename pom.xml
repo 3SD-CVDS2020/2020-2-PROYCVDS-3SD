@@ -10,9 +10,12 @@
     <name>Historial_de_Equipos</name>
 
     <properties>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <!-- <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir> -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>        
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <apache-shiro.version>1.2.1</apache-shiro.version>
+    </properties>
                 
     <dependencies>
         
@@ -21,6 +24,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.primefaces</groupId>
@@ -101,6 +105,44 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.184</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.26</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.26</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.shiro.tools/shiro-tools-hasher -->
+        <dependency>
+            <groupId>org.apache.shiro.tools</groupId>
+            <artifactId>shiro-tools-hasher</artifactId>
+            <version>1.2.3</version>
         </dependency>
 
 

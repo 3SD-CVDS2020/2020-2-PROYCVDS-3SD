@@ -5,7 +5,7 @@ machine:
 
 deployment:
   staging:
-    branch: master
+    branch: main
     heroku:
       appname: 2020-2-PROYCVDS-3SD
       
