@@ -71,13 +71,5 @@ public class Usuario{
 		this.semestre = semestre;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

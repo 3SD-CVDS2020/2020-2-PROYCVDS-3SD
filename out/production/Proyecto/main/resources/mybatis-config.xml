@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>        
+    </settings>
+    
+    <typeAliases>
+        <typeAlias type='edu.eci.cvds.entities.Usuario' alias='Usuario'/>
+    </typeAliases>        
+
+        
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="org.postgresql.Driver" />
+                <property name="url" value="jdbc:postgresql://ec2-23-23-36-227.compute-1.amazonaws.com:5432/de5v20hco2dcch?ssl=true &amp; sslfactory=org.postgresql.ssl.NonValidatingFactory"/>
+                <property name="username" value="twbdpvbahecydw" />
+                <property name="password" value="db732cf7558db10d97218624e8a46c914e6ed3cc49755385546271c8477d9353" />
+            </dataSource>
+        </environment>
+    </environments>
+        
+    <mappers>
+        <mapper resource="mappers/UsuarioMapper.xml"></mapper>             
+    </mappers> 
+        
+        
+</configuration>
