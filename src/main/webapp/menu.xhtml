@@ -60,7 +60,7 @@
 		
 					
         <ul>
-          <li><h:commandLink action="index?faces-redirect = true" style="position: absolute;top: 10px;right: 420px;">Log out</h:commandLink>></li>
+          <li><h:commandLink action="usuario?faces-redirect=true" style="position: absolute;top: 10px;right: 420px;" >Log out</h:commandLink>></li>
         </ul>
       </h:form>
 
@@ -88,8 +88,8 @@
 
 			
 			<div class="text-center11">
-				<p:commandButton   actionListener="#{LoginBean.login}" value=" Registrar Equipos " style="font-size:larger"/>
-				<p:commandButton   actionListener="#{LoginBean.login}" value="Registrar Elementos" style="font-size:larger"/>
+				<p:commandButton   action="equipos?faces-redirect=true" value=" Registrar Equipos " style="font-size:larger"/>
+				<p:commandButton   action="elemento?faces-redirect=true" value="Registrar Elementos" style="font-size:larger"/>
 				<p:commandButton   actionListener="#{LoginBean.login}" value=" Registrar Novedad " style="font-size:larger"/>
 				<p:commandButton   actionListener="#{LoginBean.login}" value=" Registrar  Equipo " style="font-size:larger"/>
 			</div>

@@ -3,11 +3,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.eci.cvds.sampleprj.mybatis.Mappers.ElementoMapper">
+	<resultMap type='Elemento' id='ElementoResult'>
+        <id property='id' column='id'/>
+        <result property='nombre' column='nombre'/>
+        <result property='tipoElemento' column='tipoElemento'/>
+        <result property="marca" column="marca"/>
+        <result property='descripcion' column='descripcion'/>
+    </resultMap>
 
-<insert id="registrarElemento"
-        parameterType="edu.eci.cvds.entities.Elemento">
+<insert id="registrarElemento" parameterType="map">
 
-        insert into elemento(idEquipo,idElemento,fecha,tipoElemento,descripcion) values ( #{idEquipo}, #{idElemento}, #{fecha}, #{tipoElemento}, #{descripcion})
+        INSERT INTO elemento VALUES ( #{elemento.id}, #{elemento.nombre}, #{elemento.tipoElemento}, #{elemento.marca}, #{elemento.descripcion});
 
 </insert>
 </mapper>

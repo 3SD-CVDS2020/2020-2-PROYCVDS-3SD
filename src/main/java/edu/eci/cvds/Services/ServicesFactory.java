@@ -2,7 +2,9 @@ package edu.eci.cvds.Services;
 
 import com.google.inject.Injector;
 
+import edu.eci.cvds.sampleprj.ElementoDAO;
 import edu.eci.cvds.sampleprj.UserDAO;
+import edu.eci.cvds.sampleprj.mybatis.MyBatisElementoDAO;
 import edu.eci.cvds.sampleprj.mybatis.MyBatisUserDao;
 import edu.eci.cvds.view.BasePageBean;
 import edu.eci.cvds.view.LoginBean;
@@ -28,6 +30,7 @@ public class ServicesFactory {
                 setEnvironmentId(env);
                 setClassPathResource(pathResource);
                 bind(UserDAO.class).to(MyBatisUserDao.class);
+                bind(ElementoDAO.class).to(MyBatisElementoDAO.class);
                 bind(UserServices.class).to(UserServicesImpl.class);
                 bind(SessionLogger.class).to(ShiroSession.class);
                 bind(BasePageBean.class).to(LoginBean.class);

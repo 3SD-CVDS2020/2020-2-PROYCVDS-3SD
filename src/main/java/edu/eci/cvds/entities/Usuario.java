@@ -2,74 +2,76 @@ package edu.eci.cvds.entities;
 
 public class Usuario{
 	
-	private String usuario;
-	private boolean estado;
-	private String correo;
-	private String clave;
 	private String carnet;
-	private String semestre;
+    private String nombre;
+    private String correo;
+    private String clave;
+    private String apellido;
+    private String cargo;
 	
 	
 	public Usuario(){
 		
 	}
 	
-	public Usuario(String usuario, boolean estado, String correo, String clave, String carnet, String semestre){
-		this.usuario = usuario;
-		this.estado = estado;
+	public Usuario(String carnet,String nombre, String correo, String clave, String apellido, String cargo){
+		this.carnet= carnet;
+		this.nombre = nombre;
 		this.correo = correo;
 		this.clave = clave;
-		this.carnet = carnet;
-		this.semestre = semestre;
-	}
-	
-	public String getUsuario(){
-		return usuario;
-	}
-	
-	public boolean getEstado(){
-		return estado;
-	}
-	
-	public String getCorreo(){
-		return correo;
-	}
-	
-	public String getContrasena(){
-		return clave;
+		this.apellido = apellido;
+		this.cargo = cargo;
 	}
 	
 	public String getCarnet(){
-		return carnet;
-	}
-	
-	public String getSemestre(){
-		return semestre;
-	}
-	
-	public void setUsuario(String usuario){
-		this.usuario = usuario;
-	}
-	
-	public void setEstado(boolean estado){
-		this.estado = estado;
-	}
-	
-	public void setCorreo(){
-		this.correo = correo;
-	}
-	
-	public void setContrasena(String clave){
-		this.clave = clave;
-	}
-	
-	public void setCarnet(String carnet){
-		this.carnet = carnet;
-	}
-	
-	public void setSemestre(String semestre){
-		this.semestre = semestre;
-	}
+    	return carnet;
+    }
+
+    public void setCarnet(String carnet){
+    	this.carnet=carnet;
+    }
+    
+    public String getCargo(){
+        return cargo;
+    }
+
+    public void setCargo(String cargo){
+        this.cargo=cargo;
+    }
+
+    public String getApellido(){
+        return apellido;
+    }
+
+    public void setApellido(String apellido){
+        this.apellido = apellido;
+    }
+
+    public String getCorreo(){
+        return correo;
+    }
+
+    public void setCorreo(String correo){
+        this.correo=correo;
+    }
+
+    public String getClave(){
+        return clave;
+    }
+
+    public void setClave(String clave){
+        this.clave=clave;
+    }
+
+    
+    
+    public String getNombre(){
+        return nombre;
+    }
+
+    public void setNombre(String nombre){
+        this.nombre=nombre;
+    }
 	
 
 }

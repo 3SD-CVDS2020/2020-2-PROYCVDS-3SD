@@ -1,37 +1,39 @@
-package main.java.edu.eci.cvds.entities;
+package edu.eci.cvds.entities;
 
 public class Elemento {
     private String tipoElemento;
     private String descripcion;
-    private String fecha;
-    private int idEquipo;
-    private int idElemento;
+    private String marca;
+    private int id;
+    private String nombre;
 
-    public Elemento(String tipoElemento, String descripcion, int idEquipo, int idElemento){
+    public Elemento(int id,String nombre,String tipoElemento,String marca, String descripcion){
         this.tipoElemento = tipoElemento;
         this.descripcion = descripcion;
-        this.idEquipo  = idEquipo;
-        this.idElemento = idElemento;
+        this.id  = id;
+        this.marca = marca;
+        this.nombre = nombre;
     }
 
+    
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public void setTipoElemento(String tipoElemento) {
         this.tipoElemento = tipoElemento;
     }
 
-    public void setIdEquipo(int idEquipo) {
-        this.idEquipo = idEquipo;
+    public void setId(int id) {
+        this.id= id;
     }
 
-    public void setIdElemento(int idElemento) {
-        this.idElemento = idElemento;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public String getTipoElemento(){
@@ -40,13 +42,13 @@ public class Elemento {
     public String getDescripcion(){
         return descripcion;
     }
-    public int getIdEquipo(){
-        return idEquipo;
+    public int getId(){
+        return id;
     }
-    public int getIdElemento() {
-        return idElemento;
+    public String getMarca() {
+        return marca;
     }
-    public String getFecha(){
-        return fecha;
+    public String getNombre(){
+        return nombre;
     }
 }

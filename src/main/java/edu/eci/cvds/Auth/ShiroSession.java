@@ -5,11 +5,13 @@ import com.google.inject.Inject;
 import edu.eci.cvds.Auth.SessionLogger;
 import edu.eci.cvds.Exceptions.PersistenceException;
 import edu.eci.cvds.Services.UserServices;
+
+import javax.swing.JOptionPane;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.crypto.hash.Sha512Hash;
 import org.apache.shiro.subject.Subject;
 
@@ -28,16 +30,19 @@ public class ShiroSession implements SessionLogger {
     @Override
     public void login(String correo,String clave,boolean remember) throws PersistenceException{
         try{
-
+        	
+        	
             Subject currentUser = SecurityUtils.getSubject();
-            UsernamePasswordToken token = new UsernamePasswordToken(correo,new Sha512Hash(clave).toHex(),remember);
+            UsernamePasswordToken token = new UsernamePasswordToken(correo,clave,remember);
             currentUser.getSession().setAttribute("correo",correo);
             currentUser.login(token);
 
         } catch ( UnknownAccountException e ) {
+        	JOptionPane.showMessageDialog(null,"Cuenta Incorrecta");
             throw new PersistenceException("Usuario o contraseña incorrectos",e);
-        } catch ( IncorrectCredentialsException e ) {
-            throw new PersistenceException("Usuario o contraseña incorrectos",e);
+        } catch ( IncorrectCredentialsException ex ) {
+        	JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrectos");
+            throw new PersistenceException("Usuario o contraseña incorrectos",ex);
         }
     }
 

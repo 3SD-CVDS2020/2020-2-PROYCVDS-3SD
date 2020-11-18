@@ -1,7 +1,9 @@
-package main.java.edu.eci.cvds.sampleprj.mybatis;
+package edu.eci.cvds.sampleprj.mybatis;
 
-import main.java.edu.eci.cvds.sampleprj.mybatis.Mappers.ElementoMapper;
-import main.java.edu.eci.cvds.sampleprj.mybatis.Mappers.EquipoMapper;
+
+import com.google.inject.Inject;
+
+import edu.eci.cvds.sampleprj.mybatis.Mappers.EquipoMapper;
 
 public class MyBatisEquipoDao {
     @Inject

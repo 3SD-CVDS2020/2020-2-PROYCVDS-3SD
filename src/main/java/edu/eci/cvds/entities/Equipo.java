@@ -1,4 +1,4 @@
-package main.java.edu.eci.cvds.entities;
+package edu.eci.cvds.entities;
 
 public class Equipo {
     private int idEquipo;

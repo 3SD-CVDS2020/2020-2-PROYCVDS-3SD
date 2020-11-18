@@ -1,6 +1,10 @@
-package main.java.edu.eci.cvds.sampleprj.mybatis.Mappers;
+package edu.eci.cvds.sampleprj.mybatis.Mappers;
+
+import org.apache.ibatis.annotations.Param;
+
+import edu.eci.cvds.entities.Elemento;
 
 public interface ElementoMapper {
-    public void registrarElemento(@Param ("tipoElemento") String tipoElemento, @Param ("descripcion") String descripcion);
+	public void registrarElemento(@Param("elemento") Elemento elemento);
 
 }

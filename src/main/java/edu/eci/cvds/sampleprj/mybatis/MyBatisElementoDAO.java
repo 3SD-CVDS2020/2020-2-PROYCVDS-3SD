@@ -1,12 +1,22 @@
-package main.java.edu.eci.cvds.sampleprj.mybatis;
+package edu.eci.cvds.sampleprj.mybatis;
 import com.google.inject.Inject;
-import main.java.edu.eci.cvds.sampleprj.mybatis.Mappers.ElementoMapper;
 
-public class MyBatisElementoDAO {
+import edu.eci.cvds.Exceptions.PersistenceException;
+import edu.eci.cvds.entities.Elemento;
+import edu.eci.cvds.sampleprj.ElementoDAO;
+import edu.eci.cvds.sampleprj.mybatis.Mappers.ElementoMapper;
+
+public class MyBatisElementoDAO implements ElementoDAO{
     @Inject
-    private ElementoMapper elementoMapper;
+    private ElementoMapper ElementoMapper;
 
-    private void RegistrarElemeto(int idEquipo, String tipoElemento, String descripcion){
-        elementoMapper.registrarElemento(tipoElemento, descripcion);
-    }
+	@Override
+	public void registrarElemento(Elemento elemento) throws PersistenceException {
+		try {
+			ElementoMapper.registrarElemento(elemento);
+		}catch(Exception e) {
+			throw new PersistenceException("Error al ingresar nuevo elemento");
+		}
+		
+	}
 }

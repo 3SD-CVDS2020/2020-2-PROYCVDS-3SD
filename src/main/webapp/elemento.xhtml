@@ -99,15 +99,20 @@
 	<input type="hidden" name="j_idt31" value="j_idt31" />
 	
 	<label id="j_idt31:j_idt32" class="ui-outputlabel ui-widget" style="position: absolute;top: 160px;right: 1220px;color: #fffcf9;font-family: URW Chancery L, cursive;font-size: 40px;"></label>
-		<input id="j_idt31:nombreiniciativa" name="j_idt31:idEquipo" type="text" style="position: absolute;top: 160px;right: 900px;width: 300px; height: 50px;background-color:#f0ffa0" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" placeholder="idEquipo" />
-		<script id="j_idt31:nombreiniciativa_s" type="text/javascript">$(function(){PrimeFaces.cw("InputText","widget_j_idt31_nombreiniciativa",{id:"j_idt31:nombreiniciativa",maxlength:-2147483648});});</script>
+		<input id="j_idt31:nombreiniciativa" name="j_idt31:Marca" type="text" style="position: absolute;top: 160px;right: 900px;width: 300px; height: 50px;background-color:#f0ffa0" class="input" placeholder="Marca" />
+		
 	
-
-	<label id="j_idt31:j_idt42" class="ui-outputlabel ui-widget" style="position: absolute;top: 200px;right: 450px;width: 310px; height: 35px;color: #fffcf9;font-family: URW Chancery L, cursive;"></label>
-	<label id="j_idt31:j_idt44" class="ui-outputlabel ui-widget" style="position: absolute;top: 280px;right: 770px;color: #fffcf9;font-family: URW Chancery L, cursive;font-size: 40px;"></label>
+	<input id="Nombre" name="j_idt31:Nombre" type="text" style="position: absolute;top: 280px;right: 450px;width: 310px; height: 35px;" class="input" placeholder="Nombre" />
 	
-	<input id="j_idt31:palaba" name="j_idt31:palaba" type="text" style="position: absolute;top: 280px;right: 450px;width: 310px; height: 35px;" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" placeholder="tipoElemento" />
-		<script id="j_idt31:palaba_s" type="text/javascript">$(function(){PrimeFaces.cw("InputText","widget_j_idt31_palaba",{id:"j_idt31:palaba",maxlength:-2147483648});});</script>
+	<p:selectOneMenu id="Elemento_Nombre" value="#{ElementoBean.nombre}" style="width: 300x; height:50px" >
+            <f:selectItem itemLabel="Teclado" itemValue="Teclado" />
+            <f:selectItem itemLabel="Monitor" itemValue="Monitor" />
+            <f:selectItem itemLabel="Cpu" itemValue="Cpu" />
+            <f:selectItem itemLabel="Mouse" itemValue="Mouse" />
+        </p:selectOneMenu>
+        <p:inputText type="marca" name="marca" id="marca" placeholde="Marca" value="#{ElementoBean.marca}"/>
+        <p:inputText type="descripcion" name="descripcion" id="descripcion" placeholder="descripcion" value="#{ElementoBean.descripcion}"/>
+        <p:commandButton type="submit" value="Agregar" style="background:#024D12; margin-top: 0.5% " styleClass="customStyleButton" action="#{ElementoBean.registrarElemento()}"/>
 		
 	<label id="j_idt31:j_idt46" class="ui-outputlabel ui-widget" style="position: absolute;top: 400px;right: 1050px;color: #fffcf9;font-family: URW Chancery L, cursive;font-size: 40px;"></label>
 		<textarea id="j_idt31:descripcion" name="j_idt31:descripcion" style="position: absolute;top: 400px;right: 535px;width: 500px;" class="ui-inputfield ui-inputtextarea ui-widget ui-state-default ui-corner-all ui-inputtextarea-resizable" cols="20" rows="3" placeholder="Descripcion" maxlength="2147483647"></textarea>

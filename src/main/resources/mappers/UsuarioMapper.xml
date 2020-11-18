@@ -7,16 +7,16 @@
 
     
     <resultMap type='Usuario' id='UsuarioResult'>
-        <id property='id' column='id'/>        
-        <result property='estado' column='estado'/>
+        <id property='carnet' column='carnet'/>        
+        <result property='nombre' column='nombre'/>
         <result property='correo' column='correo'/>
         <result property='clave' column='clave'/>
-		<result property='carnet' column='carnet'/>
-		<result property='semestre' column='semestre'/>
+		<result property='apellido' column='apellido'/>
+		<result property='cargo' column='cargo'/>
     </resultMap>
   	
   	<insert id="registrarUsuario" parameterType="map">
-		INSERT INTO usuario VALUES(#{usuario.id},#{usuario.estado},#{usuario.correo},#{usuario.clave},#{usuario.carnet},#{usuario.semestre});
+		INSERT INTO usuario VALUES(#{usuario.carnet},#{usuario.nombre},#{usuario.correo},#{usuario.clave},#{usuario.apellido},#{usuario.cargo});
 	</insert>
 	
 </mapper>

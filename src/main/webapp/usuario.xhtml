@@ -66,8 +66,8 @@
         </div>
 
           <ul>
-            <li class="active"><h:commandLink action="index?faces-redirect = true" style="position: absolute;top: 20px;right: 1100px;">Inicio</h:commandLink></li>
-            <li class="Registrarse text-center"><h:commandLink action="index?faces-redirect = true" style="position: absolute;top: 20px;right: 1000px;" href="#Registrarse">Registrarse</h:commandLink></li>
+            <li class="active"><h:commandLink action="usuario?faces-redirect = true" style="position: absolute;top: 20px;right: 1100px;">Inicio</h:commandLink></li>
+            <li class="Registrarse text-center"><h:commandLink action="userRegistro?faces-redirect=true" style="position: absolute;top: 20px;right: 1000px;">Registrarse</h:commandLink></li>
 
           </ul>
         <!-- .nav-menu1 -->
@@ -103,7 +103,7 @@
 
               <div class="form-row111">
                 <div class="col-lg-4 col-md-6 form-group1">
-                  <p:inputText   class="form-control" id="clave" placeholder="clave" type="String" value="#{LoginBean.password}" />
+                  <p:inputText   class="form-control" id="clave" placeholder="clave" type="password" value="#{LoginBean.password}" />
                   <div class="validate1"></div>
                 </div>
               </div>

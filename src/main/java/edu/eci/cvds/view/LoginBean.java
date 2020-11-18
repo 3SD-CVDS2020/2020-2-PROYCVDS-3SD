@@ -6,11 +6,15 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+
+import org.apache.shiro.authz.annotation.RequiresGuest;
+
 import javax.faces.event.ActionEvent;
 
 import com.google.inject.Inject;
 
 import edu.eci.cvds.Exceptions.PersistenceException;
+import edu.eci.cvds.Services.ServicesFactory;
 import edu.eci.cvds.Auth.*;
 
 @SuppressWarnings("deprecation")
@@ -26,18 +30,23 @@ public class LoginBean extends BasePageBean{
     private String password;
     private Boolean remember;
 
+    
+    @RequiresGuest
     public void login() throws IOException, PersistenceException{
         boolean isLogger = sessionLogger.isLogged();
-        if(!isLogger){
+        if(!isLogger) {        	
             sessionLogger.login(correo, password, false);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("../menu.xhtml");
         } else{
             existingSession();
+            sessionLogger.logout();
         }
+        
     }
 
     public void existingSession() throws IOException{
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        facesContext.getExternalContext().redirect("");
+        facesContext.getExternalContext().redirect("../usuario.xhtml");
     }
 
     public void register() throws IOException{

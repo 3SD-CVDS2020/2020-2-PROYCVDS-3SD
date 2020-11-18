@@ -3,39 +3,43 @@ package edu.eci.cvds.view;
 import java.io.IOException;
 import java.util.*;
 
-import javax.enterprise.context.SessionScoped;
+
 import javax.faces.bean.ManagedBean;
-import javax.faces.context.ExternalContext;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
-
 import com.google.inject.Inject;
-
-import org.apache.shiro.crypto.hash.Sha512Hash;
 
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.Exceptions.PersistenceException;
 import edu.eci.cvds.Services.UserServices;
 
-@ManagedBean(name = "registerBean")
+@SuppressWarnings("deprecation")
+@ManagedBean(name = "RegisterBean")
 @SessionScoped
 public class RegisterBean extends BasePageBean {
     @Inject
     private UserServices userService;
-
     private static final long serialVersionUID = 1L;
-    private String id;
-    private boolean estado;
+    private String carnet;
+    private String nombre;
     private String correo;
     private String clave;
-    private String carnet;
-    private String semestre;
+    private String apellido;
+    private String cargo;
 
     public void registerNewUser() throws PersistenceException, IOException{
         try {
-            userService.registrarUsuario(new Usuario(id, estado,correo,new Sha512Hash(clave).toHex(),carnet,semestre));
+        	System.out.println("ENTRA POR LO MENOS");
+        	System.out.println("ENTRA POR LO MENOS");
+        	System.out.println("ENTRA POR LO MENOS");
+        	System.out.println("ENTRA POR LO MENOS");
+        	System.out.println("ENTRA POR LO MENOS");
+        	System.out.println("ENTRA POR LO MENOS");
+        	System.out.println("ENTRA POR LO MENOS");
+            userService.registrarUsuario(new Usuario(carnet, nombre,correo,clave,apellido,cargo));
             FacesContext facesContext = FacesContext.getCurrentInstance();
             facesContext.getExternalContext().redirect("../usuario.xhtml");
+            
         } catch (PersistenceException e) {
             throw new PersistenceException("Error al registrar el equipo");
         }
@@ -47,12 +51,28 @@ public class RegisterBean extends BasePageBean {
         facesContext.getExternalContext().redirect("../usuario.xhtml");
     }
 
-    public String getDocumento(){
-        return id;
+    public String getCarnet(){
+    	return carnet;
     }
 
-    public void setDocumento(String documento){
-        this.id=documento;
+    public void setCarnet(String carnet){
+    	this.carnet=carnet;
+    }
+    
+    public String getCargo(){
+        return cargo;
+    }
+
+    public void setCargo(String cargo){
+        this.cargo=cargo;
+    }
+
+    public String getApellido(){
+        return apellido;
+    }
+
+    public void setApellido(String apellido){
+        this.apellido = apellido;
     }
 
     public String getCorreo(){
@@ -63,15 +83,6 @@ public class RegisterBean extends BasePageBean {
         this.correo=correo;
     }
 
-//   public String getNombre(){
-  //      return nombre;
-//    }
-//
-//    public void setNombre(String nombre){
-//        this.nombre=nombre;
-//    }
-
-
     public String getClave(){
         return clave;
     }
@@ -80,5 +91,18 @@ public class RegisterBean extends BasePageBean {
         this.clave=clave;
     }
 
+    
+    
+    public String getNombre(){
+        return nombre;
+    }
+
+    public void setNombre(String nombre){
+        this.nombre=nombre;
+    }
+
+
+
+    
 
 }

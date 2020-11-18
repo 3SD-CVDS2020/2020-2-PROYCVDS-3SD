@@ -2,13 +2,15 @@ package edu.eci.cvds.guice;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+
+import edu.eci.cvds.sampleprj.ElementoDAO;
 import edu.eci.cvds.sampleprj.UserDAO;
+import edu.eci.cvds.sampleprj.mybatis.MyBatisElementoDAO;
 import edu.eci.cvds.sampleprj.mybatis.MyBatisUserDao;
 import edu.eci.cvds.view.BasePageBean;
 import edu.eci.cvds.view.LoginBean;
 import edu.eci.cvds.Auth.SessionLogger;
 import edu.eci.cvds.Auth.ShiroSession;
-//import edu.eci.cvds.Services.ServicesFactory;
 import edu.eci.cvds.Services.UserServices;
 import edu.eci.cvds.Services.impl.UserServicesImpl;
 import org.mybatis.guice.XMLMyBatisModule;
@@ -34,7 +36,9 @@ public class GuiceContextListener implements ServletContextListener{
                 setClassPathResource("mybatis-config.xml");
                 // TODO Add service class associated to Stub implementation
                 bind(UserDAO.class).to(MyBatisUserDao.class);
+                bind(ElementoDAO.class).to(MyBatisElementoDAO.class);
                 bind(UserServices.class).to(UserServicesImpl.class);
+                bind(BasePageBean.class).to(LoginBean.class);
                 bind(SessionLogger.class).to(ShiroSession.class);
             }
         });
