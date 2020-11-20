@@ -1,10 +1,14 @@
 package edu.eci.cvds.entities;
 
+import java.util.Date;
+
 public class Equipo {
     private int idEquipo;
     private String estado;
     private boolean enUso;
     private int idLaboratorio;
+    private Date fechaInicioActividad;
+	private Date fechaFinActividad;
 
     public Equipo(int idEquipo,String estado,boolean enUso,int idLaboratorio){
         this.idEquipo = idEquipo;
@@ -41,4 +45,12 @@ public class Equipo {
     public void setIdLaboratorio(int idLaboratorio) {
         this.idLaboratorio = idLaboratorio;
     }
+
+	public Date getFechaFinActividad() {
+		return this.fechaFinActividad;
+	}
+	
+	public void setFechaFinActividad(Date fechaFinActividad) {
+		this.fechaFinActividad=fechaFinActividad;
+	}
 }

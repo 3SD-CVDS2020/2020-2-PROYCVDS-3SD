@@ -1,11 +1,15 @@
 package edu.eci.cvds.entities;
 
+import java.sql.Date;
+
 public class Elemento {
     private String tipoElemento;
     private String descripcion;
     private String marca;
     private int id;
     private String nombre;
+    private Date fechaInicioActividad;
+	private Date fechaFinActividad;
 
     public Elemento(int id,String nombre,String tipoElemento,String marca, String descripcion){
         this.tipoElemento = tipoElemento;
@@ -51,4 +55,9 @@ public class Elemento {
     public String getNombre(){
         return nombre;
     }
+
+
+	public Object getFechaFinActividad() {
+		return this.fechaFinActividad;
+	}
 }

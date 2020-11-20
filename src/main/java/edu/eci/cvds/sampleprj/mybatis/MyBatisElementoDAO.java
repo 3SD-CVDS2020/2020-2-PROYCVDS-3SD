@@ -33,5 +33,25 @@ public class MyBatisElementoDAO implements ElementoDAO{
 			}
 		}
 
+	@Override
+	public Elemento getElemento(int id) throws PersistenceException {
+		return elementoMapper.getElemento(id);
+	}
+
+	@Override
+	public boolean elementoAsociadoaEquipo(int idElemento) {
+		return elementoMapper.elementoAsociadoaEquipo(idElemento);
+	}
+
+	@Override
+	public void desvincularElementos(String tipoElemento, int idEquipo) throws PersistenceException {
+		try {
+			elementoMapper.desvincularElementos(tipoElemento,idEquipo);
+		}catch(Exception e) {
+			throw new PersistenceException("Elemento sin vinculo");
+		}
+		
+	}
+
 }
 

@@ -23,4 +23,13 @@ public class EquipoServicesImpl implements EquipoServices{
 	public ArrayList<Equipo> getEquipos() throws PersistenceException {
 		return equipoDao.getEquipos();
 	}
+
+	@Override
+	public Equipo getEquipo(int equipo) throws PersistenceException {
+		try {
+			return equipoDao.getEquipo(equipo);
+		} catch (PersistenceException e) {
+			throw new PersistenceException("No se puede obtener el equipo");
+		}
+	}
 }

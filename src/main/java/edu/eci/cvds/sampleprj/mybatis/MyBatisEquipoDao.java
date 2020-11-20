@@ -35,6 +35,25 @@ public class MyBatisEquipoDao implements EquipoDAO {
 		}
 	}
 
+	@Override
+	public Equipo getEquipo(int idEquipo) throws PersistenceException {
+		try {
+			return equipoMapper.getEquipo(idEquipo);
+		}catch(Exception e) {
+			throw new PersistenceException("No se encuentra el equipo");
+		}
+	}
+
+	@Override
+	public void asociarElemento(int idElemento, int idEquipo) throws PersistenceException {
+		Equipo e = getEquipo(idEquipo);
+		if ((e!=null) && (e.getFechaFinActividad()==null)){
+			equipoMapper.asociarElemento(idElemento,idEquipo);
+		}else {
+			throw new PersistenceException("El equipo no se puede asociar");
+		}
+		
+	}
 }
 
 

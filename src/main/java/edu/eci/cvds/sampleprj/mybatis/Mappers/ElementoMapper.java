@@ -11,4 +11,10 @@ public interface ElementoMapper {
 
 	public ArrayList<Elemento> getElementos();
 
+	public Elemento getElemento(@Param("id")int id);
+
+	public boolean elementoAsociadoaEquipo(@Param("idElemento")int idElemento);
+
+	public void desvincularElementos(@Param("tipoElemento")String tipoElemento,@Param("idEquipo")int idEquipo);
+
 }

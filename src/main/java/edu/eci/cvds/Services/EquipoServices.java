@@ -9,4 +9,6 @@ public interface EquipoServices {
 	public void registrarEquipo(String estado,boolean enUso,int idLaboratorio)throws PersistenceException;
 
 	public ArrayList<Equipo> getEquipos()throws PersistenceException;
+
+	public Equipo getEquipo(int equipo) throws PersistenceException;
 }

@@ -10,5 +10,7 @@ public interface ElementoServices {
 	public ArrayList<Elemento> getElementos() throws PersistenceException;
 
 	public void registrarElemento(int id, String nombre, String tipoElemento, String marca, String descripcion) throws PersistenceException;
+	
+	public void asociarElemento(int idElemento,int idEquipo) throws PersistenceException;
 
 }

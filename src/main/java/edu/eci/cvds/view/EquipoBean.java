@@ -3,6 +3,8 @@ package edu.eci.cvds.view;
 import java.util.ArrayList;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import edu.eci.cvds.Exceptions.PersistenceException;
@@ -12,8 +14,10 @@ import edu.eci.cvds.Services.ServicesFactory;
 import edu.eci.cvds.entities.Equipo;
 
 
-
-public class EquipoBean{
+@SuppressWarnings("deprecation")
+@ManagedBean(name ="EquipoBean")
+@SessionScoped
+public class EquipoBean extends BasePageBean{
 	
 	private String estado;
 	private boolean enUso;
