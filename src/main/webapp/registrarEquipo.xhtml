@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      lang="es">
+	<h:head>
+	<title>RegistroEquipos</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	</h:head>
+	<h:body>
+		<p>******Registro de Equipos******</p>
+			
+			
+		<h:form id="signup-form" method="post" action="#">
+			<p:inputText  class="form-control" type="String" id="idEquipo"  placeholder="id" value="#{EquipoBean.id}"/>
+			<p:inputText  class="form-control" type="String" id="estado"  placeholder="estado" value="#{EquipoBean.estado}"/>
+			<p:inputText  class="form-control" type="String" id="enUso"  placeholder="enUso" value="#{EquipoBean.enUso}"/>
+			<p:inputText  class="form-control" type="String" id="idElemento"  placeholder="idElemento" value="#{EquipoBean.idElemento}"/>
+
+			<p:commandButton type="submit" value="Registrar" style="background:#024D12; margin-top: 0.5% " styleClass="customStyleButton" action="#{EquipoBean.registrarEquipo}"/>
+		</h:form>
+		
+	</h:body>
+
+</html>

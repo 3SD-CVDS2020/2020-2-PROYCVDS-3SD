@@ -17,21 +17,11 @@ public class UserServicesImpl implements UserServices{
 	private ElementoDAO elementoDao;
 
 	@Override
-	public void registrarUsuario(Usuario usuario) throws PersistenceException {
+	public void registrarUsuario(int carnet,String nombre,String correo,String clave,String apellido,String cargo) throws PersistenceException {
 		try {
-			userDao.registrarUsuario(usuario);
+			userDao.registrarUsuario(carnet,nombre,correo,clave,apellido,cargo);
 		}catch(PersistenceException e) {
 			throw new PersistenceException("Error al registrar");
-		}
-		
-	}
-
-	@Override
-	public void registrarElemento(Elemento elemento) throws PersistenceException {
-		try {
-			elementoDao.registrarElemento(elemento);
-		}catch(Exception e) {
-			throw new PersistenceException("Error al registar elemento");
 		}
 		
 	}

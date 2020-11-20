@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  lang="es">
+<h:head>
+	<title>Consultar Elemento</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+</h:head>
+
+<h:body>
+	<div class="equipo">
+		<a href="menuElemento.xhtml"><input style="background:#fff; margin-top: 0.5%" styleClass="customStyleButton" type="button" value="Volver"></input></a>
+	</div>
+	<h:form>
+
+		<center>
+
+			<h2 style="color:white; font-size:100px ;">Equipos</h2>
+		</center>
+		<br></br>
+		<p:dataTable var="Elementos" value="#{ElementoBean.getElementos()}" paginator="true"  rows="5"
+					 paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks}  {LastPageLink} {RowsPerPageDropdown}"
+					 currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} Saved"
+					 rowsPerPageTemplate="5,10,15,20">				>
+
+
+			<p:column    filterBy="#{Equipos.id}" sortBy="#{Equipos.id}"  >
+				<f:facet name="header">
+					<h:outputText value="ID" />
+				</f:facet>
+				<h:outputText value="#{Elementos.id}" />
+			</p:column>
+
+			<p:column  filterBy="#{Elementos.nombre}" sortBy="#{Elementos.nombre}" >
+				<f:facet name="header">
+					<h:outputText value="nombre" />
+				</f:facet>
+				<h:outputText value="#{Elementos.nombre}" />
+			</p:column>
+			
+			<p:column filterBy="#{Elementos.tipoElemento}" sortBy="#{Elementos.tipoElemento}">
+				<f:facet name="header">
+					<h:outputText value="tipoElemento" />
+				</f:facet>
+				<h:outputText value="#{Elementos.tipoElemento}" />
+			</p:column>
+
+			<p:column  filterBy="#{Elementos.marca}" sortBy="#{Elementos.marca}" >
+				<f:facet name="header">
+					<h:outputText value="Marca" />
+				</f:facet>
+				<h:outputText value="#{Elementos.marca}" />
+			</p:column>
+
+			
+
+			<p:column filterBy="#{Elementos.descripcion}" sortBy="#{Elementos.descripcion}">
+				<f:facet name="header">
+					<h:outputText value="Descripcion" />
+				</f:facet>
+				<h:outputText value="#{Elementos.descripcion}" />
+			</p:column>
+
+		</p:dataTable>
+
+	</h:form>
+
+</h:body>
+</html>

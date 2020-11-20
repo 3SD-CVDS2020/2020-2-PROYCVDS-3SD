@@ -36,7 +36,7 @@ public class LoginBean extends BasePageBean{
         boolean isLogger = sessionLogger.isLogged();
         if(!isLogger) {        	
             sessionLogger.login(correo, password, false);
-            FacesContext.getCurrentInstance().getExternalContext().redirect("../menu.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("../nuevoMenu.xhtml");
         } else{
             existingSession();
             sessionLogger.logout();

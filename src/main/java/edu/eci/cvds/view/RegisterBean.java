@@ -11,6 +11,7 @@ import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.Exceptions.PersistenceException;
+import edu.eci.cvds.Services.ServicesFactory;
 import edu.eci.cvds.Services.UserServices;
 
 @SuppressWarnings("deprecation")
@@ -18,9 +19,9 @@ import edu.eci.cvds.Services.UserServices;
 @SessionScoped
 public class RegisterBean extends BasePageBean {
     @Inject
-    private UserServices userService;
+    private UserServices userService = ServicesFactory.getInstance().getUserServices();
     private static final long serialVersionUID = 1L;
-    private String carnet;
+    private int carnet;
     private String nombre;
     private String correo;
     private String clave;
@@ -29,19 +30,12 @@ public class RegisterBean extends BasePageBean {
 
     public void registerNewUser() throws PersistenceException, IOException{
         try {
-        	System.out.println("ENTRA POR LO MENOS");
-        	System.out.println("ENTRA POR LO MENOS");
-        	System.out.println("ENTRA POR LO MENOS");
-        	System.out.println("ENTRA POR LO MENOS");
-        	System.out.println("ENTRA POR LO MENOS");
-        	System.out.println("ENTRA POR LO MENOS");
-        	System.out.println("ENTRA POR LO MENOS");
-            userService.registrarUsuario(new Usuario(carnet, nombre,correo,clave,apellido,cargo));
+            userService.registrarUsuario(carnet,nombre,correo,clave,apellido,cargo);
             FacesContext facesContext = FacesContext.getCurrentInstance();
             facesContext.getExternalContext().redirect("../usuario.xhtml");
             
         } catch (PersistenceException e) {
-            throw new PersistenceException("Error al registrar el equipo");
+            throw new PersistenceException("Error al registrar el Usuario");
         }
     }
 
@@ -51,11 +45,11 @@ public class RegisterBean extends BasePageBean {
         facesContext.getExternalContext().redirect("../usuario.xhtml");
     }
 
-    public String getCarnet(){
+    public int getCarnet(){
     	return carnet;
     }
 
-    public void setCarnet(String carnet){
+    public void setCarnet(int carnet){
     	this.carnet=carnet;
     }
     

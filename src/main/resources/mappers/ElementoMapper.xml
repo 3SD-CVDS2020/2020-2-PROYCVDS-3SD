@@ -10,10 +10,13 @@
         <result property="marca" column="marca"/>
         <result property='descripcion' column='descripcion'/>
     </resultMap>
+    
+    <select id="getElementos" resultMap="ElementoResult" parameterType="map">
+        SELECT *
+        FROM "elementos";
+    </select>
 
-<insert id="registrarElemento" parameterType="map">
-
-        INSERT INTO elemento VALUES ( #{elemento.id}, #{elemento.nombre}, #{elemento.tipoElemento}, #{elemento.marca}, #{elemento.descripcion});
-
-</insert>
+	<insert id="registrarElemento" parameterType="Elemento">
+        INSERT INTO elemento VALUES ( #{id}, #{nombre}, #{tipoElemento}, #{marca}, #{descripcion});
+   	</insert>
 </mapper>

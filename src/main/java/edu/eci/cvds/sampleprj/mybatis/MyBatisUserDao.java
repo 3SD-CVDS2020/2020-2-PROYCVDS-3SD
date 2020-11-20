@@ -15,9 +15,10 @@ public class MyBatisUserDao implements UserDAO{
 	private UserMapper	userMapper;
 
 	@Override
-	public void registrarUsuario(Usuario usuario) throws PersistenceException {
+	public void registrarUsuario(int carnet,String nombre,String correo,String clave,String apellido,String cargo) throws PersistenceException {
 		try {
-			userMapper.registrarUsuario(usuario);
+			System.out.println("AQUI NO TAMBIEN ");
+			userMapper.registrarUsuario(carnet,nombre,correo,clave,apellido,cargo);
 		}catch(Exception e) {
 			throw new PersistenceException("Usuario No Registrado");
 			

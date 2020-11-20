@@ -6,17 +6,19 @@
 <mapper namespace="edu.eci.cvds.sampleprj.mybatis.Mappers.UserMapper">
 
     
-    <resultMap type='Usuario' id='UsuarioResult'>
-        <id property='carnet' column='carnet'/>        
-        <result property='nombre' column='nombre'/>
-        <result property='correo' column='correo'/>
-        <result property='clave' column='clave'/>
-		<result property='apellido' column='apellido'/>
-		<result property='cargo' column='cargo'/>
+    <resultMap type="Usuario" id="UsuarioResult">
+        <id property="carnet" column="carnet"/>        
+        <result property="nombre" column="nombre"/>
+        <result property="correo" column="correo"/>
+        <result property="clave" column="clave"/>
+		<result property="apellido" column="apellido"/>
+		<result property="cargo" column="cargo"/>
     </resultMap>
   	
-  	<insert id="registrarUsuario" parameterType="map">
-		INSERT INTO usuario VALUES(#{usuario.carnet},#{usuario.nombre},#{usuario.correo},#{usuario.clave},#{usuario.apellido},#{usuario.cargo});
+  	
+  	<insert id="registrarUsuario" parameterType="Usuario">
+		INSERT INTO usuario(carnet,nombre,correo,clave,apellido,cargo) 
+		VALUES(#{carnet},#{nombre},#{correo},#{clave},#{apellido},#{cargo});
 	</insert>
 	
 </mapper>

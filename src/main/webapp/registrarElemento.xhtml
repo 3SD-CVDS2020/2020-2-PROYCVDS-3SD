@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      lang="es">
+	<h:head>
+	<title>RegistroElementos</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	</h:head>
+	<h:body>
+		<p>******Registro de Elementos******</p>
+			
+			
+		<h:form id="signup-form" method="post" action="#">
+			<p:inputText  class="form-control" type="String" id="idElemento"  placeholder="id" value="#{ElementoBean.id}"/>
+			<p:inputText  class="form-control" type="String" id="nombre"  placeholder="nombre" value="#{ElementoBean.nombre}"/>
+			<p:inputText  class="form-control" type="String" id="marca"  placeholder="marca" value="#{ElementoBean.marca}"/>
+			<p:inputText  class="form-control" type="String" id="descripcion"  placeholder="descripcion" value="#{ElementoBean.descripcion}"/>
+			<h:selectOneMenu id="Elemento_Tipo" value="#{ElementoBean.tipoElemento}" style="width: 300x; height:50px" >
+            <f:selectItem itemLabel="Teclado" itemValue="Teclado" />
+            <f:selectItem itemLabel="Monitor" itemValue="Monitor" />
+            <f:selectItem itemLabel="Cpu" itemValue="Cpu" />
+            <f:selectItem itemLabel="Mouse" itemValue="Mouse" />
+        	</h:selectOneMenu>
+			<p:commandButton type="submit" value="Registrar" style="background:#024D12; margin-top: 0.5% " styleClass="customStyleButton" action="#{ElementoBean.registrarElemento}"/>
+		</h:form>
+		
+	</h:body>
+
+</html>
