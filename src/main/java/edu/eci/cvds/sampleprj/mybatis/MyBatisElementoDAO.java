@@ -18,7 +18,7 @@ public class MyBatisElementoDAO implements ElementoDAO{
 			System.out.println("AQUI SE QUEDA TAMBIEN");
 			elementoMapper.registrarElemento(id,nombre,tipoElemento,marca,descripcion);
 		}catch(Exception e) {
-			throw new PersistenceException("Error al ingresar nuevo elemento");
+			throw new PersistenceException("Error al ingresar nuevo elemento",e);
 		}
 		
 	}

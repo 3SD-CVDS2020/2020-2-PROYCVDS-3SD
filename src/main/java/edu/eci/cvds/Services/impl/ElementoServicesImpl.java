@@ -29,7 +29,7 @@ public class ElementoServicesImpl implements ElementoServices {
 		try {
 			elementoDao.registrarElemento(id, nombre, tipoElemento, marca, descripcion);
 		}catch(Exception e) {
-			throw new PersistenceException("No se puede registar el elemento");
+			throw new PersistenceException("No se puede registar el elemento",e);
 		}
 	}
 
