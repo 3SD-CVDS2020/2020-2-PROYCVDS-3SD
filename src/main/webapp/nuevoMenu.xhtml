@@ -1,30 +1,39 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-	<title> Historial de Equipos </title>
+		<title> Historial de Equipos </title>
+		<link href="css/style.css" rel="stylesheet"/>
 	</head>
 	<body>
-	<p>****** Menu ******</p>
-	
-		<table class="egt">
+		<img id="bg" src="img/fondo.jpg" alt="Fondo" />
+		<header>
+			<h2>Historial de Equipos</h2>
+		</header>
+		<section>
+			<table class="egt">
+				<tr> <td><h2> Menu </h2> </td></tr>
+			  <tr>
+				
+				<td> 
+					<input type="button" onClick="location.href='../menuEquipos.xhtml';" value="Go to Equipos" />
 
-		  <tr>
+					<input type="button" onClick="location.href='../menuElemento.xhtml';" value="Go to Elementos" /> 
+				</td>
 
-			<td> <input type="button" onClick="location.href='../menuEquipos.xhtml';" value="Go to Equipos" /></td>
+			  </tr>
 
-			<td> <input type="button" onClick="location.href='../menuElemento.xhtml';" value="Go to Elementos" /> </td>
+			  <tr>
 
-		  </tr>
+				<td> 
+					<button name="Insertar"> Laboratorios </button>
 
-		  <tr>
+					<button name="Insertar"> Novedades </button> 
+				</td>
 
-			<td> <button name="Insertar"> Laboratorios </button> </td>
+			  </tr>
 
-			<td> <button name="Insertar"> Novedades </button> </td>
-
-		  </tr>
-
-		</table>
+			</table>
+		</section>
 
 	</body>
 

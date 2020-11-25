@@ -1,0 +1,49 @@
+header{
+	background: #AB2121;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	opacity:0.9;
+}
+
+body{
+	margin: 0px;
+}
+
+table{
+	margin:0 auto;
+	margin-top:10%;
+}
+
+#signup-form{
+	margin:0 auto;
+	margin-top:10%;
+}
+
+h2{
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-align: center;
+}
+
+button{
+	width: 150px;
+	height: 80px;
+}
+
+input{
+	width: 150px;
+	height: 80px;
+}
+
+#bg {
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	width: 100%;
+	opacity:0.9;
+}
+
+tr{
+	text-align:center;
+}
