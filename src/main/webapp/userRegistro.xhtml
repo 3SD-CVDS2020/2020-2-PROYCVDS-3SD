@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	</h:head>
 	<h:body>
-		<p>******Registro de Usuarios******</p>
+		<h2 style="color:orangered; font-size:80px ;">Registro Usuario</h2>
 			
 			
 		<h:form id="signup-form" method="post" action="#">
@@ -19,8 +19,9 @@
 			<p:inputText  class="form-control" type="String" id="nombre"  placeholder="Nombre" value="#{RegistrarBean.nombre}"/>
 			<p:inputText  class="form-control" type="String" id="apellido"  placeholder="Apellido" value="#{RegistrarBean.apellido}"/>
 			<p:inputText  class="form-control" type="String" id="cargo"  placeholder="Cargo" value="#{RegistrarBean.cargo}"/>
-			<p:commandButton type="submit" value="Registrar" style="background:#024D12; margin-top: 0.5% " styleClass="customStyleButton" action="#{RegistrarBean.registerNewUser}"/>
+			
 		</h:form>
+		<p:commandButton type="submit" value="Registrar" style="background:orangered;color:#fff; margin-top: 0.5%; margin-left: 49% " styleClass="customStyleButton" action="#{RegistrarBean.registerNewUser}"/>
 		
 	</h:body>
 
