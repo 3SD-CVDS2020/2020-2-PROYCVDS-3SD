@@ -1,0 +1,68 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  lang="es">
+<h:head>
+	
+	<title>Consultar Equipo</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+</h:head>
+
+<h:body>
+	<div class="equipo">
+		<a href="menuEquipos.xhtml"><input style="background:#fff; margin-top: 0.5%" styleClass="customStyleButton" type="button" value="Volver"></input></a>
+	</div>
+	<h:form>
+
+		<center>
+
+			<h2 style="color:orangered; font-size:100px ;">Equipos</h2>
+		</center>
+		<br></br>
+		<p:dataTable id="tablaEquipos" var="Equipo" value="#{EquipoBean.getEquipos()}" selectionMode="single"
+						 selection="#{EquipoBean.equipo}" rowKey="#{Equipo.idEquipo}">
+				
+				<p:column  style="color:black;"  filterBy="#{Equipo.idEquipo}" sortBy="#{Equipo.idEquipo}"  >
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{Equipo.idEquipo}" />
+				</p:column>
+	
+				<p:column style="color:black;" filterBy="#{Equipo.nombre}" sortBy="#{Equipo.nombre}" >
+					<f:facet name="header">
+						<h:outputText value="Nombre" />
+					</f:facet>
+					<h:outputText value="#{Equipo.nombre}" />
+				</p:column>
+	
+				<p:column style="color:black;" filterBy="#{Equipo.estado}" sortBy="#{Equipo.estado}">
+					<f:facet name="header">
+						<h:outputText value="Estado" />
+					</f:facet>
+					<h:outputText value="#{Equipo.estado}" />
+				</p:column>
+				
+				<p:column style="color:black;" filterBy="#{Equipo.enUso}" sortBy="#{Equipo.enUso}">
+					<f:facet name="header">
+						<h:outputText value="En Uso" />
+					</f:facet>
+					<h:outputText value="#{Equipo.enUso}" />
+				</p:column>
+				
+				<p:column style="color:black;" filterBy="#{Equipo.idLaboratorio}" sortBy="#{Equipo.idLaboratorio}" >
+					<f:facet name="header">
+						<h:outputText value="Laboratorio" />
+					</f:facet>
+					<h:outputText value="#{Equipo.idLaboratorio}" />
+				</p:column>
+	
+			</p:dataTable>
+			
+			
+	</h:form>
+
+</h:body>
+</html>

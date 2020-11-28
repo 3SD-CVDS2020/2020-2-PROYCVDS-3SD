@@ -1,0 +1,61 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  lang="es">
+<h:head>
+	
+	<title>Consultar Laboratorio</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+</h:head>
+
+<h:body>
+	<div class="laboratorio">
+		<a href="menuLaboratorio.xhtml"><input style="background:orangered;color:#fff; margin-top: 0.5%" styleClass="customStyleButton" type="button" value="Volver"></input></a>
+	</div>
+	<h:form>
+
+		<center>
+
+			<h2 style="color:orangered; font-size:100px ;">Laboratorios</h2>
+		</center>
+		<br></br>
+		<p:dataTable id="tablaLaboratorios" var="Laboratorio" value="#{LaboratorioBean.getLaboratorios()}" selectionMode="single"
+						 selection="#{LaboratorioBean.laboratorio}" rowKey="#{Laboratorio.idLaboratorio}">
+				
+				<p:column  style="color:black;"  filterBy="#{Laboratorio.idLaboratorio}" sortBy="#{Laboratorio.idLaboratorio}"  >
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{Laboratorio.idLaboratorio}" />
+				</p:column>
+	
+				<p:column style="color:black;" filterBy="#{Laboratorio.nombre}" sortBy="#{Laboratorio.nombre}" >
+					<f:facet name="header">
+						<h:outputText value="Nombre" />
+					</f:facet>
+					<h:outputText value="#{Laboratorio.nombre}" />
+				</p:column>
+	
+				<p:column style="color:black;" filterBy="#{Laboratorio.horario}" sortBy="#{Laboratorio.horario}">
+					<f:facet name="header">
+						<h:outputText value="Horario" />
+					</f:facet>
+					<h:outputText value="#{Laboratorio.horario}" />
+				</p:column>
+				
+				<p:column style="color:black;" filterBy="#{Laboratorio.caracteristicas}" sortBy="#{Laboratorio.caracteristicas}">
+					<f:facet name="header">
+						<h:outputText value="Caracteristicas" />
+					</f:facet>
+					<h:outputText value="#{Laboratorio.caracteristicas}" />
+				</p:column>
+	
+			</p:dataTable>
+			
+			
+	</h:form>
+
+</h:body>
+</html>

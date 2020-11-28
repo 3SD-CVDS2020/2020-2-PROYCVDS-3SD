@@ -5,16 +5,16 @@ import java.util.Date;
 public class Equipo {
     private int idEquipo;
     private String estado;
-    private boolean enUso;
+    private String enUso;
     private int idLaboratorio;
-    private Date fechaInicioActividad;
-	private Date fechaFinActividad;
+    private String nombre;
 
-    public Equipo(int idEquipo,String estado,boolean enUso,int idLaboratorio){
+    public Equipo(int idEquipo,String nombre,String estado,String enUso,int idLaboratorio){
         this.idEquipo = idEquipo;
         this.estado = estado;
         this.enUso = enUso;
         this.idLaboratorio = idLaboratorio;
+        this.nombre = nombre;
     }
 
     public String getEstado() {
@@ -30,14 +30,6 @@ public class Equipo {
     public int getIdEquipo() {
         return idEquipo;
     }
-
-    public boolean enUso() {
-    	return this.enUso;
-    }
-    
-    public void setEnUso(boolean enUso) {
-    	this.enUso=enUso;
-    }
     public int getIdLaboratorio() {
         return idLaboratorio;
     }
@@ -46,11 +38,19 @@ public class Equipo {
         this.idLaboratorio = idLaboratorio;
     }
 
-	public Date getFechaFinActividad() {
-		return this.fechaFinActividad;
+	public String getNombre() {
+		return this.nombre;
 	}
 	
-	public void setFechaFinActividad(Date fechaFinActividad) {
-		this.fechaFinActividad=fechaFinActividad;
+	public void setNombre(String nombre) {
+		this.nombre=nombre;
+	}
+
+	public String getEnUso() {
+		return enUso;
+	}
+
+	public void setEnUso(String enUso) {
+		this.enUso = enUso;
 	}
 }

@@ -4,6 +4,7 @@
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  lang="es">
 <h:head>
+	
 	<title>Consultar Elemento</title>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -17,54 +18,51 @@
 
 		<center>
 
-			<h2 style="color:white; font-size:100px ;">Equipos</h2>
+			<h2 style="color:orangered; font-size:100px ;">Elementos</h2>
 		</center>
 		<br></br>
-		<p:dataTable var="Elementos" value="#{ElementoBean.getElementos()}" paginator="true"  rows="5"
-					 paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks}  {LastPageLink} {RowsPerPageDropdown}"
-					 currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} Saved"
-					 rowsPerPageTemplate="5,10,15,20">				>
-
-
-			<p:column    filterBy="#{Equipos.id}" sortBy="#{Equipos.id}"  >
-				<f:facet name="header">
-					<h:outputText value="ID" />
-				</f:facet>
-				<h:outputText value="#{Elementos.id}" />
-			</p:column>
-
-			<p:column  filterBy="#{Elementos.nombre}" sortBy="#{Elementos.nombre}" >
-				<f:facet name="header">
-					<h:outputText value="nombre" />
-				</f:facet>
-				<h:outputText value="#{Elementos.nombre}" />
-			</p:column>
+		<p:dataTable id="tablaElementos" var="Elemento" value="#{ElementoBean.getElementos()}" selectionMode="single"
+						 selection="#{ElementoBean.elemento}" rowKey="#{Elemento.id}">
+				
+				<p:column  style="color:black;"  filterBy="#{Elemento.id}" sortBy="#{Elemento.id}"  >
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{Elemento.id}" />
+				</p:column>
+	
+				<p:column style="color:black;" filterBy="#{Elemento.tipoElemento}" sortBy="#{Elemento.tipoElemento}" >
+					<f:facet name="header">
+						<h:outputText value="tipoElemento" />
+					</f:facet>
+					<h:outputText value="#{Elemento.tipoElemento}" />
+				</p:column>
+	
+				<p:column style="color:black;" filterBy="#{Elemento.marca}" sortBy="#{Elemento.marca}">
+					<f:facet name="header">
+						<h:outputText value="marca" />
+					</f:facet>
+					<h:outputText value="#{Elemento.marca}" />
+				</p:column>
+				
+				<p:column style="color:black;" filterBy="#{Elemento.descripcion}" sortBy="#{Elemento.descripcion}">
+					<f:facet name="header">
+						<h:outputText value="Descripcion" />
+					</f:facet>
+					<h:outputText value="#{Elemento.descripcion}" />
+				</p:column>
+				
+				<p:column style="color:black;" filterBy="#{Elemento.idEquipo}" sortBy="#{Elemento.idEquipo}" >
+					<f:facet name="header">
+						<h:outputText value="idEquipo" />
+					</f:facet>
+					<h:outputText value="#{Elemento.idEquipo}" />
+				</p:column>
+	
+			</p:dataTable>
+			<p:commandButton type="submit" value="Dar de baja" style="background:orangered;color:#fff; margin-top: 0.5%; margin-left: 49.5%" styleClass="customStyleButton" actionListener="#{ElementoBean.darBajaElemento()}"/>
 			
-			<p:column filterBy="#{Elementos.tipoElemento}" sortBy="#{Elementos.tipoElemento}">
-				<f:facet name="header">
-					<h:outputText value="tipoElemento" />
-				</f:facet>
-				<h:outputText value="#{Elementos.tipoElemento}" />
-			</p:column>
-
-			<p:column  filterBy="#{Elementos.marca}" sortBy="#{Elementos.marca}" >
-				<f:facet name="header">
-					<h:outputText value="Marca" />
-				</f:facet>
-				<h:outputText value="#{Elementos.marca}" />
-			</p:column>
-
 			
-
-			<p:column filterBy="#{Elementos.descripcion}" sortBy="#{Elementos.descripcion}">
-				<f:facet name="header">
-					<h:outputText value="Descripcion" />
-				</f:facet>
-				<h:outputText value="#{Elementos.descripcion}" />
-			</p:column>
-
-		</p:dataTable>
-
 	</h:form>
 
 </h:body>

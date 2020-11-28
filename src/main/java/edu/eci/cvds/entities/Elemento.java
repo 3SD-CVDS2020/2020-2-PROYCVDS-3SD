@@ -7,16 +7,14 @@ public class Elemento {
     private String descripcion;
     private String marca;
     private int id;
-    private String nombre;
-    private Date fechaInicioActividad;
-	private Date fechaFinActividad;
+    private int idEquipo;
 
-    public Elemento(int id,String nombre,String tipoElemento,String marca, String descripcion){
+    public Elemento(int id,String tipoElemento,String marca, String descripcion,int idEquipo){
         this.tipoElemento = tipoElemento;
         this.descripcion = descripcion;
         this.id  = id;
         this.marca = marca;
-        this.nombre = nombre;
+        this.idEquipo = idEquipo;
     }
 
     
@@ -24,8 +22,8 @@ public class Elemento {
         this.descripcion = descripcion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setIdEquipo(int idEquipo) {
+        this.idEquipo = idEquipo;
     }
 
     public void setTipoElemento(String tipoElemento) {
@@ -52,12 +50,8 @@ public class Elemento {
     public String getMarca() {
         return marca;
     }
-    public String getNombre(){
-        return nombre;
+    public int getIdEquipo(){
+        return idEquipo;
     }
 
-
-	public Object getFechaFinActividad() {
-		return this.fechaFinActividad;
-	}
 }

@@ -16,12 +16,11 @@ public class MyBatisEquipoDao implements EquipoDAO {
     
 
 	@Override
-	public void registrarEquipo(String estado, boolean enUso, int idLaboratorio) throws PersistenceException {
+	public void registrarEquipo(String nombre,String estado, String enUso, int idLaboratorio) throws PersistenceException {
 		try {
-			System.out.println("Quiero ver que llegue aqui");
-			equipoMapper.registrarEquipo(estado,enUso, idLaboratorio);
+			equipoMapper.registrarEquipo(nombre,estado,enUso, idLaboratorio);
 		}catch(Exception e) {
-			throw new PersistenceException("No es posible registrar el equipo");
+			throw new PersistenceException("No es posible registrar el equipo",e);
 		}
 		
 	}
@@ -31,7 +30,7 @@ public class MyBatisEquipoDao implements EquipoDAO {
 		try {
 			return equipoMapper.getEquipos();
 		}catch(Exception e) {
-			throw new PersistenceException("No se encontraron equipos");
+			throw new PersistenceException("No se encontraron equipos",e);
 		}
 	}
 
@@ -40,20 +39,38 @@ public class MyBatisEquipoDao implements EquipoDAO {
 		try {
 			return equipoMapper.getEquipo(idEquipo);
 		}catch(Exception e) {
-			throw new PersistenceException("No se encuentra el equipo");
+			throw new PersistenceException("No se encuentra el equipo",e);
 		}
 	}
 
 	@Override
-	public void asociarElemento(int idElemento, int idEquipo) throws PersistenceException {
-		Equipo e = getEquipo(idEquipo);
-		if ((e!=null) && (e.getFechaFinActividad()==null)){
-			equipoMapper.asociarElemento(idElemento,idEquipo);
-		}else {
-			throw new PersistenceException("El equipo no se puede asociar");
+	public int getIdEquipo() throws PersistenceException {
+		try {
+			return equipoMapper.getIdEquipo();
+		}catch(Exception e) {
+			throw new PersistenceException("No fue posible consultar el ultimo Id",e);
+		}
+	}
+
+	@Override
+	public ArrayList<Equipo> getEquiposDisponibles() throws PersistenceException {
+		try {
+			return equipoMapper.getEquiposDisponibles();
+		}catch(Exception e) {
+			throw new PersistenceException("No fue posible consultar los equipos disponibles",e);
+		}
+	}
+
+	@Override
+	public void asociarEquipo(int idEquipo, int ultimoID) throws PersistenceException {
+		try {
+			equipoMapper.asociarEquipo(idEquipo,ultimoID);
+		}catch(Exception e) {
+			throw new PersistenceException("No se pudo asociar el equipo",e);
 		}
 		
 	}
+
 }
 
 

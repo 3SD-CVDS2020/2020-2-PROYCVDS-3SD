@@ -1,17 +1,18 @@
 CREATE TABLE usuario (
 	carnet INT NOT NULL,
+	correo VARCHAR(50) NOT NULL,
+	clave VARCHAR(12) NOT NULL,
 	nombre VARCHAR(50) NOT NULL, 
-	correo VARCHAR(50) NOT NULL, 
-	clave VARCHAR(12) NOT NULL, 
 	apellido VARCHAR(25) NOT NULL,
 	cargo VARCHAR(25) NOT NULL
  ); 
  
  CREATE TABLE equipo (
-	idEquipo INT NOT NULL, 
-	Estado VARCHAR(25) NOT NULL,
-	EnUso BOOLEAN NOT NULL,
-	idElemento INT NOT NULL
+	idEquipo INT NOT NULL,
+	nombre VARCHAR(25) NOT NULL, 
+	estado VARCHAR(25) NOT NULL,
+	enUso CHAR(2) NOT NULL,
+	idLaboratorio INT NOT NULL
  ); 
  
  CREATE TABLE novedad (
@@ -26,16 +27,17 @@ CREATE TABLE usuario (
  
  CREATE TABLE laboratorio (
 	idLaboratorio INT NOT NULL,
-	idEquipo INT NOT NULL,
-	Descripcion VARCHAR(40) NOT NULL
+	nombre VARCHAR(30) NOT NULL,
+	horario VARCHAR(30) NOT NULL,
+	caracteristicas VARCHAR(40) NOT NULL
  );
  
  CREATE TABLE elemento (
 	id INT NOT NULL,
-	Nombre VARCHAR(25) NOT NULL,
 	TipoElemento VARCHAR(15) NOT NULL,
 	Marca VARCHAR(25) NOT NULL,
-	descripcion VARCHAR(50) NOT NULL
+	descripcion VARCHAR(50) NOT NULL,
+	idEquipo INT NOT NULL
 );
 
 
@@ -47,8 +49,7 @@ ALTER TABLE laboratorio ADD CONSTRAINT pk_laboratorio PRIMARY KEY (idLaboratorio
 ALTER TABLE novedad ADD CONSTRAINT pk_novedad PRIMARY KEY (idNovedad);
 ----------------FK----------------
 
-ALTER TABLE equipo ADD CONSTRAINT FK_equipo_elemento FOREIGN KEY (idEquipo) REFERENCES elemento(id);
-ALTER TABLE laboratorio ADD CONSTRAINT FK_laboratorio_equipo FOREIGN KEY (idEquipo) REFERENCES equipo(idEquipo);
+alter table equipo add constraint fk_equipo_laboratorio foreign key (idLaboratorio) references Laboratorio(idLaboratorio);
 ALTER TABLE novedad ADD CONSTRAINT FK_novedad_equipo FOREIGN KEY (idEquipo) REFERENCES equipo(idEquipo);
 ALTER TABLE novedad ADD CONSTRAINT FK_novedad_laboratorio FOREIGN KEY (idLaboratorio) REFERENCES laboratorio(idLaboratorio);
 

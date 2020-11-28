@@ -5,8 +5,11 @@ import java.util.*;
 
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Usuario;
@@ -15,28 +18,26 @@ import edu.eci.cvds.Services.ServicesFactory;
 import edu.eci.cvds.Services.UserServices;
 
 @SuppressWarnings("deprecation")
-@ManagedBean(name = "RegisterBean")
-@SessionScoped
-public class RegisterBean extends BasePageBean {
+@ManagedBean(name = "RegistrarBean")
+@RequestScoped
+public class RegistrarBean extends BasePageBean {
     @Inject
-    private UserServices userService = ServicesFactory.getInstance().getUserServices();
+    
     private static final long serialVersionUID = 1L;
     private int carnet;
-    private String nombre;
     private String correo;
     private String clave;
+    private String nombre;
     private String apellido;
     private String cargo;
+    
+    private UserServices userService = ServicesFactory.getInstance().getUserServices();
 
     public void registerNewUser() throws PersistenceException, IOException{
-        try {
-            userService.registrarUsuario(carnet,nombre,correo,clave,apellido,cargo);
-            FacesContext facesContext = FacesContext.getCurrentInstance();
-            facesContext.getExternalContext().redirect("../usuario.xhtml");
-            
-        } catch (PersistenceException e) {
-            throw new PersistenceException("Error al registrar el Usuario");
-        }
+
+    	userService.registrarUsuario(carnet,correo,clave,nombre,apellido,cargo);
+    	FacesContext facesContext = FacesContext.getCurrentInstance();
+        facesContext.getExternalContext().redirect("../usuario.xhtml");
     }
 
     public void redirectToLogin() throws IOException{

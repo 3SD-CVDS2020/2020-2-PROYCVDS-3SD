@@ -2,7 +2,7 @@ package edu.eci.cvds.entities;
 
 public class Usuario{
 	
-	private String carnet;
+	private int carnet;
     private String nombre;
     private String correo;
     private String clave;
@@ -14,7 +14,7 @@ public class Usuario{
 		
 	}
 	
-	public Usuario(String carnet,String nombre, String correo, String clave, String apellido, String cargo){
+	public Usuario( int carnet,String correo,String clave,String nombre,String apellido, String cargo){
 		this.carnet= carnet;
 		this.nombre = nombre;
 		this.correo = correo;
@@ -23,11 +23,11 @@ public class Usuario{
 		this.cargo = cargo;
 	}
 	
-	public String getCarnet(){
+	public int getCarnet(){
     	return carnet;
     }
 
-    public void setCarnet(String carnet){
+    public void setCarnet(int carnet){
     	this.carnet=carnet;
     }
     

@@ -5,22 +5,38 @@
 
 <mapper namespace="edu.eci.cvds.sampleprj.mybatis.Mappers.EquipoMapper">
     <resultMap type="Equipo" id="EquipoResult">
-        <id property="id" column="id"/>
+        <id property="idEquipo" column="idEquipo"/>
+        <result property="nombre" column="nombre"/>
         <result property="estado" column="estado"/>
         <result property="enUso" column="enuso"/>
-		<result property="idLaboratorio" column="idlaboratorio"/>
+		<result property="idLaboratorio" column="idLaboratorio"/>
     </resultMap>
 
-    <select id="getEquipos" resultMap="EquipoResult" parameterType="map">
-        SELECT *
-        FROM "equipos";
+    <select id="getEquipos" resultMap="EquipoResult">
+        SELECT * FROM equipo;
     </select>
 
+	<select id="getEquipo" resultMap="EquipoResult" parameterType="int">
+        SELECT *
+        FROM equipo
+        WHERE id=#{id};
+    </select>
 
     <insert id="registrarEquipo" parameterType="Equipo">
-        INSERT INTO equipos(id,nombre,estado,enUso,idLaboratorio)
-	VALUES((select count(*)+1 from equipos),#{estado},#{enUso},#{idLaboratorio}) ;
+        INSERT INTO equipo VALUES((select count(*)+1 from equipo),#{nombre},#{estado},#{enUso},#{idLaboratorio}) ;
     </insert>
     	
+    <select id="getEquiposDisponibles" resultMap="EquipoResult">
+        SELECT *
+        FROM equipo
+        WHERE idLaboratorio=0;
+    </select>
+    
+    <update id="asociarEquipo">
+   		UPDATE equipo SET idLaboratorio=#{ultimoID} WHERE idEquipo=#{idEquipo};
+   	</update>
+    <select id="getIdEquipo" resultType="int">
+    	SELECT count(*) from equipo;
+    </select>
 
 </mapper>

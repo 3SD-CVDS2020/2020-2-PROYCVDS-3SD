@@ -20,29 +20,23 @@ public class ElementoServicesImpl implements ElementoServices {
 	
 	@Override
 	public ArrayList<Elemento> getElementos() throws PersistenceException {
-		
-		return elementoDao.getElementos();
+		try {
+			return elementoDao.getElementos();
+		}catch(Exception e) {
+			throw new PersistenceException("No se puede consultar los elementos",e);
+		}
 	}
 	
 	@Override
-	public void registrarElemento(int id, String nombre, String tipoElemento, String marca, String descripcion)throws PersistenceException{
+	public void registrarElemento(int id, String tipoElemento, String marca, String descripcion, int idEquipo)throws PersistenceException{
 		try {
-			elementoDao.registrarElemento(id, nombre, tipoElemento, marca, descripcion);
+			elementoDao.registrarElemento(id, tipoElemento, marca, descripcion, idEquipo);
 		}catch(Exception e) {
 			throw new PersistenceException("No se puede registar el elemento",e);
 		}
 	}
 
-	@Override
-	public void asociarElemento(int idElemento, int idEquipo) throws PersistenceException {
-		Elemento e = getElemento(idElemento);
-		if(e==null) throw new PersistenceException("No existe el elemento a vincular.");
-		if(elementoAsociadoaEquipo(idElemento)) throw new PersistenceException("Este elemento ya se encuentra vinculado a otro equipo");
-		if(e.getFechaFinActividad()!=null) throw new PersistenceException("El elemento a sido dado de baja, este no puede ser vinculado a ningun equipo.");
-		if(equipoDao.getEquipo(idEquipo)==null) throw new PersistenceException("No existe este equipo.");
-		elementoDao.desvincularElementos(e.getTipoElemento(),idEquipo);
-		equipoDao.asociarElemento(idElemento, idEquipo);
-	}
+	
 
 	private boolean elementoAsociadoaEquipo(int idElemento) {
 		return this.elementoDao.elementoAsociadoaEquipo(idElemento);
@@ -54,6 +48,26 @@ public class ElementoServicesImpl implements ElementoServices {
 		} catch (PersistenceException e) {
 			throw new PersistenceException("No se puede obtener el elemento");
 		}
+	}
+
+	@Override
+	public void asociarElemento(int id, int idEquipo) throws PersistenceException {
+		try {
+			elementoDao.asociarElemento(id,idEquipo);
+		}catch(Exception e) {
+			throw new PersistenceException("No se puede asociar el elemento",e);
+		}
+		
+	}
+
+	@Override
+	public void darBajaElemento(int id, String descripcion) throws PersistenceException {
+		try {
+			elementoDao.darBajaElemento(id,descripcion);
+		}catch(Exception e) {
+			throw new PersistenceException("No se puede dar de baja el elemento",e);
+		}
+		
 	}
 		
 }

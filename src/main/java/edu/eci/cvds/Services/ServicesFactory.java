@@ -4,15 +4,16 @@ import com.google.inject.Injector;
 
 import edu.eci.cvds.sampleprj.ElementoDAO;
 import edu.eci.cvds.sampleprj.EquipoDAO;
+import edu.eci.cvds.sampleprj.LaboratorioDAO;
 import edu.eci.cvds.sampleprj.UserDAO;
 import edu.eci.cvds.sampleprj.mybatis.MyBatisElementoDAO;
 import edu.eci.cvds.sampleprj.mybatis.MyBatisEquipoDao;
+import edu.eci.cvds.sampleprj.mybatis.MyBatisLaboratorioDao;
 import edu.eci.cvds.sampleprj.mybatis.MyBatisUserDao;
-import edu.eci.cvds.view.BasePageBean;
-import edu.eci.cvds.view.LoginBean;
 import edu.eci.cvds.Auth.*;
 import edu.eci.cvds.Services.impl.ElementoServicesImpl;
 import edu.eci.cvds.Services.impl.EquipoServicesImpl;
+import edu.eci.cvds.Services.impl.LaboratorioServicesImpl;
 import edu.eci.cvds.Services.impl.UserServicesImpl;
 import org.mybatis.guice.XMLMyBatisModule;
 
@@ -38,9 +39,10 @@ public class ServicesFactory {
                 bind(ElementoServices.class).to(ElementoServicesImpl.class);
                 bind(EquipoDAO.class).to(MyBatisEquipoDao.class);
                 bind(EquipoServices.class).to(EquipoServicesImpl.class);
+                bind(LaboratorioDAO.class).to(MyBatisLaboratorioDao.class);
+                bind(LaboratorioServices.class).to(LaboratorioServicesImpl.class);
                 bind(UserServices.class).to(UserServicesImpl.class);
                 bind(SessionLogger.class).to(ShiroSession.class);
-                bind(BasePageBean.class).to(LoginBean.class);
             }
         });
     }
@@ -74,4 +76,10 @@ public class ServicesFactory {
         }
         return optInjector.get().getInstance(EquipoServices.class);
     }
+	public LaboratorioServices getLaboratorioServices() {
+		if(!optInjector.isPresent()){
+            optInjector=Optional.of(myBatisInjector("development","mybatis-config.xml"));
+        }
+        return optInjector.get().getInstance(LaboratorioServices.class);
+	}
 }

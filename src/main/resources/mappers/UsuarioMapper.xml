@@ -3,22 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
                      
-<mapper namespace="edu.eci.cvds.sampleprj.mybatis.Mappers.UserMapper">
+<mapper namespace="edu.eci.cvds.sampleprj.mybatis.Mappers.UsuarioMapper">
 
     
-    <resultMap type="Usuario" id="UsuarioResult">
-        <id property="carnet" column="carnet"/>        
-        <result property="nombre" column="nombre"/>
-        <result property="correo" column="correo"/>
-        <result property="clave" column="clave"/>
-		<result property="apellido" column="apellido"/>
-		<result property="cargo" column="cargo"/>
+    <resultMap type='Usuario' id='UsuarioResult'>
+        <id property='carnet' column='carnet'/>
+        <result property='correo' column='correo'/>
+        <result property='clave' column='clave'/>        
+        <result property='nombre' column='nombre'/>
+		<result property='apellido' column='apellido'/>
+		<result property='cargo' column='cargo'/>
     </resultMap>
   	
   	
-  	<insert id="registrarUsuario" parameterType="Usuario">
-		INSERT INTO usuario(carnet,nombre,correo,clave,apellido,cargo) 
-		VALUES(#{carnet},#{nombre},#{correo},#{clave},#{apellido},#{cargo});
+  	<insert id="registrarUsuario" parameterType="Usuario" keyProperty="carnet" useGeneratedKeys="false">
+		INSERT INTO usuario VALUES (#{carnet},#{correo},#{clave},#{nombre},#{apellido},#{cargo});
 	</insert>
 	
 </mapper>

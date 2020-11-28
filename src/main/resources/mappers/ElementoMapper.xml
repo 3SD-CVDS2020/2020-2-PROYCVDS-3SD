@@ -5,18 +5,26 @@
 <mapper namespace="edu.eci.cvds.sampleprj.mybatis.Mappers.ElementoMapper">
 	<resultMap type='Elemento' id='ElementoResult'>
         <id property='id' column='id'/>
-        <result property='nombre' column='nombre'/>
         <result property='tipoElemento' column='tipoElemento'/>
         <result property="marca" column="marca"/>
         <result property='descripcion' column='descripcion'/>
+        <result property='idEquipo' column='idEquipo'/>
     </resultMap>
     
     <select id="getElementos" resultMap="ElementoResult" parameterType="map">
         SELECT *
-        FROM "elementos";
+        FROM elemento;
     </select>
 
 	<insert id="registrarElemento" parameterType="Elemento">
-        INSERT INTO elemento VALUES ( #{id}, #{nombre}, #{tipoElemento}, #{marca}, #{descripcion});
+        INSERT INTO elemento VALUES ( #{id}, #{tipoElemento}, #{marca}, #{descripcion}, #{idEquipo});
    	</insert>
+   	
+   	<update id="asociarElemento">
+   		UPDATE elemento SET idEquipo=#{idEquipo} WHERE id=#{id};
+   	</update>
+   	
+   	<update id="darBajaElemento">
+   		UPDATE elemento SET descripcion=#{descripcion} WHERE id=#{id} and idEquipo=0;
+   	</update>
 </mapper>

@@ -14,14 +14,21 @@ public class EquipoServicesImpl implements EquipoServices{
 	private EquipoDAO equipoDao;
 
 	@Override
-	public void registrarEquipo(String estado, boolean enUso, int idLaboratorio) throws PersistenceException {
-		equipoDao.registrarEquipo(estado,enUso,idLaboratorio);
-		
+	public void registrarEquipo(String nombre,String estado, String enUso, int idLaboratorio) throws PersistenceException {
+		try {
+			equipoDao.registrarEquipo(nombre,estado,enUso,idLaboratorio);
+		}catch(Exception e){
+			throw new PersistenceException("Por que no sabia esta",e);
+		}
 	}
 
 	@Override
 	public ArrayList<Equipo> getEquipos() throws PersistenceException {
-		return equipoDao.getEquipos();
+		try {
+			return equipoDao.getEquipos();
+		}catch(Exception e) {
+			throw new PersistenceException("No se obtuvieron los equipos",e);
+		}
 	}
 
 	@Override
@@ -29,7 +36,37 @@ public class EquipoServicesImpl implements EquipoServices{
 		try {
 			return equipoDao.getEquipo(equipo);
 		} catch (PersistenceException e) {
-			throw new PersistenceException("No se puede obtener el equipo");
+			throw new PersistenceException("No se puede obtener el equipo",e);
 		}
+	}
+
+	@Override
+	public int getIdEquipo() throws PersistenceException {
+		try {
+			return equipoDao.getIdEquipo();
+		}catch(Exception e) {
+			throw new PersistenceException("No se pudo consultar el ultimo Id",e);
+		}
+	}
+
+	@Override
+	public ArrayList<Equipo> getEquiposDisponibles() throws PersistenceException {
+		try {
+			return equipoDao.getEquiposDisponibles();
+		}catch(Exception e) {
+			throw new PersistenceException("No se pueden consultar los equipos disponibles",e);
+		}
+		
+	}
+
+	@Override
+	public void asociarEquipo(int idEquipo, int ultimoID) throws PersistenceException {
+		try {
+			equipoDao.asociarEquipo(idEquipo,ultimoID);
+		}catch(Exception e) {
+			throw new PersistenceException("No se puede asociar el equipo",e);
+		}
+		
+		
 	}
 }

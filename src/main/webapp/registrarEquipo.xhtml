@@ -4,21 +4,231 @@
       xmlns:f="http://java.sun.com/jsf/core"
       lang="es">
 	<h:head>
-	<title>RegistroEquipos</title>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<title>Registro Equipos</title>
+	    <meta charset="utf-8"/>
+	    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	</h:head>
 	<h:body>
-		<p>******Registro de Equipos******</p>
+		<p>Registro de Equipos</p>
 			
 			
 		<h:form id="signup-form" method="post" action="#">
-			<p:inputText  class="form-control" type="String" id="idEquipo"  placeholder="id" value="#{EquipoBean.id}"/>
-			<p:inputText  class="form-control" type="String" id="estado"  placeholder="estado" value="#{EquipoBean.estado}"/>
-			<p:inputText  class="form-control" type="String" id="enUso"  placeholder="enUso" value="#{EquipoBean.enUso}"/>
-			<p:inputText  class="form-control" type="String" id="idElemento"  placeholder="idElemento" value="#{EquipoBean.idElemento}"/>
+			<p:growl id="growl" showDetail="true" sticky="true" life="4000"> 
+		        		<p:autoUpdate />
+		   	</p:growl>
+			<p:inputText  class="form-control" type="String" id="nombre"  placeholder="Nombre" value="#{EquipoBean.nombre}"/>
+			
+			<h:selectOneMenu id="Equipo_Estado" value="#{EquipoBean.estado}" style="width: 300x; height:50px" >
+				<f:selectItem itemLabel="Seleccione un estado" itemValue="Seleccione un estado" />
+				<f:selectItem itemLabel="Disponible" itemValue="Disponible" />
+				<f:selectItem itemLabel="En reparacion" itemValue="En reparacion" />
+				<f:selectItem itemLabel="Reservado" itemValue="Reservado" />
+				<f:selectItem itemLabel="Apagado" itemValue="Apagado" />
+			</h:selectOneMenu>
+			
+			<h:selectOneMenu id="Equipo_EnUso" value="#{EquipoBean.enUso}" style="width: 300x; height:50px" >
+				<f:selectItem itemLabel="Esta en uso?" itemValue="Esta en uso?" />
+				<f:selectItem itemLabel="Si" itemValue="Si" />
+				<f:selectItem itemLabel="No" itemValue="No" />
+			</h:selectOneMenu>
+			
+			
+			
+			<h2 style="color:orangered; font-size:40px ;">Seleccione un teclado</h2>
+			<p:dataTable id="tablaTeclados" var="Teclado" value="#{ElementoBean.getTeclados()}" selectionMode="single"
+						 selection="#{EquipoBean.teclado}" rowKey="#{Teclado.id}"
+						 paginator="true" rows="10"  rowsPerPageTemplate="5,10,15,20">>
+				<p:column style="color:black;" filterBy="#{Teclado.id}" sortBy="#{Teclado.id}" >
+					<f:facet name="header">
+						<h:outputText value="IdElemento" />
+					</f:facet>
+					<h:outputText value="#{Teclado.id}" />
+				</p:column>
 
-			<p:commandButton type="submit" value="Registrar" style="background:#024D12; margin-top: 0.5% " styleClass="customStyleButton" action="#{EquipoBean.registrarEquipo}"/>
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="tipoElemento" />
+					</f:facet>
+					<h:outputText value="#{Teclado.tipoElemento}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Marca" />
+					</f:facet>
+					<h:outputText value="#{Teclado.marca}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Descripcion" />
+					</f:facet>
+					<h:outputText value="#{Teclado.descripcion}" />
+				</p:column>
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="IdEquipo" />
+					</f:facet>
+					<h:outputText value="#{Teclado.idEquipo}" />
+				</p:column>
+
+			</p:dataTable>
+			
+			
+			
+			<h2 style="color:orangered; font-size:40px ;">Seleccione un monitor</h2>
+			<p:dataTable id="tablaMonitores" var="Monitor" value="#{ElementoBean.getMonitores()}" selectionMode="single"
+						 selection="#{EquipoBean.monitor}" rowKey="#{Monitor.id}"
+						 paginator="true" rows="10"  rowsPerPageTemplate="5,10,15,20">>
+				<p:column style="color:black;" filterBy="#{Monitor.id}" sortBy="#{Monitor.id}" >
+					<f:facet name="header">
+						<h:outputText value="IdElemento" />
+					</f:facet>
+					<h:outputText value="#{Monitor.id}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="tipoElemento" />
+					</f:facet>
+					<h:outputText value="#{Monitor.tipoElemento}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Marca" />
+					</f:facet>
+					<h:outputText value="#{Monitor.marca}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="descripcion" />
+					</f:facet>
+					<h:outputText value="#{Monitor.descripcion}" />
+				</p:column>
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="IdEquipo" />
+					</f:facet>
+					<h:outputText value="#{Monitor.idEquipo}" />
+				</p:column>
+
+			</p:dataTable>
+			
+			
+			
+			
+			<h2 style="color:orangered; font-size:40px ;">Seleccione un Mouse</h2>
+			<p:dataTable id="tablaMouses" var="Mouse" value="#{ElementoBean.getMouses()}" selectionMode="single"
+						 selection="#{EquipoBean.mouse}" rowKey="#{Mouse.id}"
+						 paginator="true" rows="10"  rowsPerPageTemplate="5,10,15,20">>
+				<p:column style="color:black;" filterBy="#{Mouse.id}" sortBy="#{Mouse.id}" >
+					<f:facet name="header">
+						<h:outputText value="IdElemento" />
+					</f:facet>
+					<h:outputText value="#{Mouse.id}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="tipoElemento" />
+					</f:facet>
+					<h:outputText value="#{Mouse.tipoElemento}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Marca" />
+					</f:facet>
+					<h:outputText value="#{Mouse.marca}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="descripcion" />
+					</f:facet>
+					<h:outputText value="#{Mouse.descripcion}" />
+				</p:column>
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="IdEquipo" />
+					</f:facet>
+					<h:outputText value="#{Mouse.idEquipo}" />
+				</p:column>
+
+			</p:dataTable>
+			
+			
+			
+			<h2 style="color:orangered; font-size:40px ;">Seleccione una CPU</h2>
+			<p:dataTable id="tablaCpu" var="Cpus" value="#{ElementoBean.getCpus()}" selectionMode="single"
+						 selection="#{EquipoBean.cpu}" rowKey="#{Cpus.id}"
+						 paginator="true" rows="10"  rowsPerPageTemplate="5,10,15,20">>
+				<p:column style="color:black;" filterBy="#{Cpus.id}" sortBy="#{Cpus.id}" >
+					<f:facet name="header">
+						<h:outputText value="IdElemento" />
+					</f:facet>
+					<h:outputText value="#{Cpus.id}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="tipoElemento" />
+					</f:facet>
+					<h:outputText value="#{Cpus.tipoElemento}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Marca" />
+					</f:facet>
+					<h:outputText value="#{Cpus.marca}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Descripcion" />
+					</f:facet>
+					<h:outputText value="#{Cpus.descripcion}" />
+				</p:column>
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="IdEquipo" />
+					</f:facet>
+					<h:outputText value="#{Cpus.idEquipo}" />
+				</p:column>
+
+			</p:dataTable>
+			
+
+			<p:commandButton type="submit" value="Registrar" style="background:orangered;color:#fff; margin-top: 0.5%; margin-left:45% " styleClass="customStyleButton" action="#{EquipoBean.registrarEquipo()}"/>
 		</h:form>
 		
 	</h:body>

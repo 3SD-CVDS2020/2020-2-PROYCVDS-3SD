@@ -6,7 +6,7 @@ import edu.eci.cvds.entities.Usuario;
 
 public interface UserServices {
 
-	public void registrarUsuario(int carnet,String nombre,String corrreo,String clave,String apellido,String cargo) throws PersistenceException;
+	public void registrarUsuario(int carnet,String corrreo,String clave,String nombre,String apellido,String cargo) throws PersistenceException;
 
 	
 

@@ -9,12 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	</h:head>
 	<h:body>
-		<p>******Registro de Elementos******</p>
+		<p>Registro de Elementos</p>
 			
 			
 		<h:form id="signup-form" method="post" action="#">
-			<p:inputText  class="form-control" type="String" id="idElemento"  placeholder="id" value="#{ElementoBean.id}"/>
-			<p:inputText  class="form-control" type="String" id="nombre"  placeholder="nombre" value="#{ElementoBean.nombre}"/>
+			<p:inputText  class="form-control" type="int" id="idElemento"  placeholder="id" value="#{ElementoBean.id}"/>
 			<p:inputText  class="form-control" type="String" id="marca"  placeholder="marca" value="#{ElementoBean.marca}"/>
 			<p:inputText  class="form-control" type="String" id="descripcion"  placeholder="descripcion" value="#{ElementoBean.descripcion}"/>
 			<h:selectOneMenu id="Elemento_Tipo" value="#{ElementoBean.tipoElemento}" style="width: 300x; height:50px" >
@@ -23,8 +22,9 @@
             <f:selectItem itemLabel="Cpu" itemValue="Cpu" />
             <f:selectItem itemLabel="Mouse" itemValue="Mouse" />
         	</h:selectOneMenu>
-			<p:commandButton type="submit" value="Registrar" style="background:#024D12; margin-top: 0.5% " styleClass="customStyleButton" action="#{ElementoBean.registrarElemento}"/>
+			
 		</h:form>
+		<p:commandButton type="submit" value="Registrar" style="background:orangered;color:#fff; margin-top: 0.5%; margin-left:45% " styleClass="customStyleButton" action="#{ElementoBean.registrarElemento}"/>
 		
 	</h:body>
 

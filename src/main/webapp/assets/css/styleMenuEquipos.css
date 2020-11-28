@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: #cccccc;
+    background-image: url("../img/imagenesMenu/pared.jpg");
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+/*body*/
+body p1 {
+    font-family: cursive;
+    font-size: 5em;
+    
+    color: #FF5733;
+    
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin-top: 10%;
+    margin-left: 10%;
+
+
+}
+.egt{
+    background: orangered;
+
+    margin-left: 40%;
+  
+}
+.egt1{
+    background: orangered;
+    margin-top: 0%;
+
+    margin-left: 46%;
+  
+}
+
+    
+
+.boton{
+    background: white;
+    font-family: fantasy;
+    font-size: 1.5em;
+    color: black ;
+    height: 40px;
+    width: 250px;
+    
+
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+    list-style: none;
+
+}
+
