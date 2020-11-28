@@ -827,13 +827,7 @@ section {
 }
 
 .form-row000 {
-  text-align: center;
-  padding-bottom: 60px;
-  width: 60%;
-  height: 100px; 
-  position: absolute;
-  top: 300px;
-  right: 6px;	
+
 }
 
 .nombre_usuario3 {
@@ -869,11 +863,11 @@ section {
 
 .form-row111 {
   text-align: center;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
   width: 60%;
   height: 100px; 
   position: absolute;
-  top: 390px;
+  top: 350px;
   right: 6px;	
 }
 
@@ -919,13 +913,12 @@ section {
 
 .form-row222 {
   text-align: center;
-  padding-bottom: 60px;
-  width: 63%;
+  padding-bottom: 30px;
+  width: 60%;
   height: 100px; 
   position: absolute;
-  top: 440px;
-  right: -20px;	
-  color: #ffcc00;
+  top: 400px;
+  right: 6px;
 }
 
 .log_in {
