@@ -7,49 +7,68 @@
     box-sizing: border-box;
 }
 /*body*/
+/*body*/
 body h1 {
     font-family: cursive;
     font-size: 5em;
+    
     color: #FF5733;
+    
     display: flex;
     justify-content:center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 5%;
+ 
 
 
 }
 .egt{
-    background: orangered;  
-    margin-left: 30%;
+    background: orangered;
+    width: 55%;
+  
+    
+   
+
+    margin-left: 23%;
   
 }
 .fotos{
     background: black;
-    margin-top: 50px;
-    margin-left: 30%;
+    margin-top: 3%;
+    margin-left: 23%;
+    height: 30%;
+    width: 55%;
+    
    
     
 }
 .foto{
     
-    margin-top: 1px;
-    margin-left: 1px;
-    margin-right: 1px;
+    margin-top: 0.1%;
+    margin-left: 0.1%;
+    margin-right: 0.1%;
     
    
    
     
 }
 .boton{
+   
+   
+    
     background:#D0D0D0;
     font-family: fantasy;
     font-size: 1.5em;
     color: black ;
+  
+    width: 100%;
+    
     display: flex;
     justify-content:center;
     align-items: center;
+
     list-style: none;
 
-}
+    
 
 }
