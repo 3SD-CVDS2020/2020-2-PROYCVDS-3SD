@@ -29,19 +29,6 @@
 **********************************************************
 ----------------------------------------------------------
 **********************************************************
-##ENTREGA #1
- * Desplegamos la aplicacion en Heroku.
- * Implementamos unas tareas pero en su totalidad el Sprint no esta terminado.
- * De lo anterior partimos y monstramos:
-	1. Modelo de la base de datos.
-		![alt](resources/modelo.jpg)
-	2. Inigio - Con su Login
-		![alt](resources/login.PNG)
-	3. Menu 
-		![alt](resources/menu.PNG)
-	4. Registrar Equipos
-		![alt](resources/RegistrarEquipos.jpg)
-	
 
 **********************************************************
 ----------------------------------------------------------
@@ -69,13 +56,57 @@
  ## Manual de Usuario
  Lo primero que se tiene que hacer es registrarse en la plataforma en la ventana de registro de usuario 
  ![alt](resources/ImagenesReadme/UsuarioRegistro.jpg)
+
+ Despues del registro en la base de datos, procedemos a iniciar sesion con las credenciales creadas
+ ![alt](resources/ImagenesReadme/Login.jpg)
+
+ Entramos al menu administrador donde podemos encontrar las diferentes secciones para Elemento,Equipo,Laboratorio,Novedad
+ ![alt](resources/ImagenesReadme/Menu.jpg)
+
+ Podemos entrar a la seccion de Elementos donde encontramos las opciones de registrar un nuevo elemento y consultar todos los elementos existentes
+ ![alt](resources/ImagenesReadme/registrarElemento.jpg)
+ ![alt](resources/ImagenesReadme/registroElemento.jpg)
+
+ Una vez registrados los elementos se pueden consultar 
+ ![alt](resources/ImagenesReadme/consultarElementos.jpg)
+
+ una vez se tengan los elementos necesarios para establecer un equipo se puede registrar el equipo
+ ![alt](resources/ImagenesReadme/registrarEquipo.jpg)
+ 
+ Donde se deben asignar los componentes del equipo, como sus elementos 
+ 
+ Definidos los elementos del equipo, estos quedan asociados al equipo directamente y el equipo queda registrado como disponible lo cual lo hace visible a la consulta
+ ![alt](resources/ImagenesReadme/consultarEquipos.jpg)
+
+ Teniendo equipos completos estos se pueden asignar a un laboratorio creado, registrando el laboratorio
+ ![alt](resources/ImagenesReadme/registrarLaboratorio.jpg)
+
+ Los cuales quedan asignados a los equipos correspondientes y se pueden consultar 
+ ![alt](resources/ImagenesReadme/consultarLaboratorios.jpg)
+
+ Donde se contempla la opcion de cerrar los elementos, lo que desasocia a los equipos y sus elementos de los laboratorios asignados
+
+
+ Tambien se tiene un registro de novedades, donde se ingresa cada actividad realizada dentro de la plataforma
+ ![alt](resources/ImagenesReadme/novedades.jpg)
+
+ Y se cuenta con un reporte exportado a excel para un mejor control y manejo de la información 
+ ![alt](resources/ImagenesReadme/reporte.jpg)
+
+
+ 
  * Arquitectura y Diseño detallado:
 	* Modelo E-R.
+	![alt](Resources/ImagenesReadme/diagramaE-R.jpg)
 	* Diagrama de clases (hacerlo mediante ingeniería inversa)
 	
 	* Descripción de la arquitectura (capas) y del Stack de tecnologías utilizado (PrimeFaces, Guice, QuickTheories, PostgreSQL).
+
+	* **PrimeFaces(FRONT)** brinda una experiencia cómoda tanto para el desarrollador como para el usuario final 
+	* **GUICE(BACK):** Genera la conexión segura entre los calculos y el back del proyecto con lo que se muestra en la vista del proyecto1
+	* **PostGre(MBD):** Servidor de base de datos que utilizamos para almacenar, buscar y modificar la información relacionada con el proyecto
 	* Enlace a la aplicación en Heroku.
-		```https://proyecto-cvds-3sd.herokuapp.com/```
+	[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://proyecto3sd.herokuapp.com/)
 		
 	* Enlace al sistema de integración continua.
  * Descripción del proceso:
