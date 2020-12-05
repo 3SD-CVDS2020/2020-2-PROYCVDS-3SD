@@ -1,19 +1,13 @@
 *{
     margin: 0;
     padding: 0;
-    
     background-image: url("../img/imagenesMenu/pared.jpg");
-    background-color: #cccccc;
     box-sizing: border-box;
 }
-/*body*/
-/*body*/
 body h1 {
     font-family: cursive;
     font-size: 5em;
-    
-    color: #FF5733;
-    
+    color:black;
     display: flex;
     justify-content:center;
     align-items: center;

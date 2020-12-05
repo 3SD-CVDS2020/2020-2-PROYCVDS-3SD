@@ -51,6 +51,18 @@
 					</f:facet>
 					<h:outputText value="#{Laboratorio.caracteristicas}" />
 				</p:column>
+				<p:column style="color:black;">
+				<f:facet name="header">
+					<h:outputText value="Fecha de Creación" />
+				</f:facet>
+				<h:outputText value="#{Laboratorio.fechaCreacion}" />
+			</p:column>
+			<p:column style="color:black;">
+				<f:facet name="header">
+					<h:outputText value="Fecha Cierre" />
+				</f:facet>
+				<h:outputText value="#{Laboratorio.fechaCierre}" />
+			</p:column>
 	
 			</p:dataTable>
 			<p:commandButton type="submit" value="Cerrar Laboratorio" style="background:orangered;color:white; margin-top: 0.5%; margin-left:20% " styleClass="customStyleButton" actionListener="#{LaboratorioBean.cerrarLaboratorio()}"/>
