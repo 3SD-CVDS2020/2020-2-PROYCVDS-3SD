@@ -29,19 +29,7 @@
 **********************************************************
 ----------------------------------------------------------
 **********************************************************
-##ENTREGA #1
- * Desplegamos la aplicacion en Heroku.
- * Implementamos unas tareas pero en su totalidad el Sprint no esta terminado.
- * De lo anterior partimos y monstramos:
-	1. Modelo de la base de datos.
-		![alt](resources/modelo.jpg)
-	2. Inigio - Con su Login
-		![alt](resources/login.PNG)
-	3. Menu 
-		![alt](resources/menu.PNG)
-	4. Registrar Equipos
-		![alt](resources/RegistrarEquipos.jpg)
-	
+
 
 **********************************************************
 ----------------------------------------------------------
@@ -68,7 +56,7 @@
 	de mantener al tanto por medio de novedades y reportes, al personal que los administre
  ## Manual de Usuario
  Lo primero que se tiene que hacer es registrarse en la plataforma en la ventana de registro de usuario 
- ![image](resources\ImagenesReadme\UsuarioRegistro.jpg)
+ ![alt](resources\ImagenesReadme\UsuarioRegistro.jpg)
  * Arquitectura y Diseño detallado:
 	* Modelo E-R.
 	* Diagrama de clases (hacerlo mediante ingeniería inversa)
