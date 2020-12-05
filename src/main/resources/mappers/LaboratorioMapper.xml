@@ -9,6 +9,9 @@
         <result property="nombre" column="nombre"/>
         <result property="horario" column="horario"/>
         <result property="caracteristicas" column="caracteristicas"/>
+        <result property="fechaCreacion" column="fechaCreacion"/>
+        <result property="cerrado" column="cerrado"/>
+        
     </resultMap>
 
     <select id="getLaboratorios" resultMap="LaboratorioResult" parameterType="map">
@@ -17,12 +20,16 @@
     </select>
     	
     <insert id="registrarLaboratorio" parameterType="Laboratorio">
-        INSERT INTO laboratorio VALUES((select count(*)+1 from laboratorio),#{nombre},#{horario},#{caracteristicas}) ;
+        INSERT INTO laboratorio VALUES((select count(*)+1 from laboratorio),#{nombre},#{horario},#{caracteristicas},#{fechaCreacion},#{cerrado}) ;
     </insert>
     
     <select id="getUltimoId" resultType="int">
     	SELECT 	COUNT(*)
     	FROM	laboratorio;
     </select>
+    
+    <update id="cerrarLaboratorio">
+    	UPDATE laboratorio SET caracteristicas="Cerrado",horario="0",cerrado=True WHERE idLaboratorio=#{idLaboratorio};
+    </update>
 
 </mapper>

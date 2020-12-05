@@ -79,6 +79,16 @@ public class MyBatisEquipoDao implements EquipoDAO {
 				throw e;
 			}
 		}
+
+	@Override
+	public void desasociar(int idEquipo) throws PersistenceException {
+		try {
+			equipoMapper.desasociar(idEquipo);
+		}catch(Exception e) {
+			throw e;
+		}
+		
+	}
 		
 }
 

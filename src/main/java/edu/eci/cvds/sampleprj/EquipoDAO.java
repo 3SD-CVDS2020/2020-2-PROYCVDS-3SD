@@ -19,4 +19,6 @@ public interface EquipoDAO {
 	public void asociarEquipo(int idEquipo, int ultimoID)throws PersistenceException;
 
 	public void darBajaEquipo(int idEquipo, String estado)throws PersistenceException;
+
+	public void desasociar(int idEquipo)throws PersistenceException;
 }

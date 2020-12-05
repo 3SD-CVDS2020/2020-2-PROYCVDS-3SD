@@ -20,6 +20,8 @@ public interface EquipoMapper {
 	public void asociarEquipo(@Param("idEquipo")int idEquipo,@Param("ultimoID") int ultimoID);
 
 	public void darBajaEquipo(@Param("idEquipo")int idEquipo,@Param("estado") String estado);
+
+	public void desasociar(@Param("idEquipo")int idEquipo);
 }
 
 

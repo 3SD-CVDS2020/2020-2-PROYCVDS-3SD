@@ -79,4 +79,14 @@ public class EquipoServicesImpl implements EquipoServices{
 		}
 		
 	}
+
+	@Override
+	public void desasociar(int idEquipo) throws PersistenceException {
+		try {
+			equipoDao.desasociar(idEquipo);
+		}catch(Exception e) {
+			throw e;
+		}
+		
+	}
 }

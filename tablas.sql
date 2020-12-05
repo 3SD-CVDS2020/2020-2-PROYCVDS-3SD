@@ -30,7 +30,9 @@ CREATE TABLE usuario (
 	idLaboratorio INT NOT NULL,
 	nombre VARCHAR(30) NOT NULL,
 	horario VARCHAR(30) NOT NULL,
-	caracteristicas VARCHAR(40) NOT NULL
+	caracteristicas VARCHAR(40) NOT NULL,
+	fechaCreacion DATE NOT NULL,
+	cerrado BOOLEAN NOT NULL
  );
  
  CREATE TABLE elemento (

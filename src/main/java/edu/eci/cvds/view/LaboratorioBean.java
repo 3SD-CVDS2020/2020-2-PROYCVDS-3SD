@@ -1,5 +1,6 @@
 package edu.eci.cvds.view;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javax.faces.application.FacesMessage;
@@ -7,9 +8,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import edu.eci.cvds.Auth.SessionLogger;
 import edu.eci.cvds.Exceptions.PersistenceException;
 import edu.eci.cvds.Services.EquipoServices;
 import edu.eci.cvds.Services.LaboratorioServices;
+import edu.eci.cvds.Services.NovedadServices;
 import edu.eci.cvds.Services.ServicesFactory;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
@@ -25,10 +28,14 @@ public class LaboratorioBean {
 	private String caracteristicas;
 	private Equipo equipo;
 	private Laboratorio laboratorio;
+	private LocalDate fechaCreacion = LocalDate.now();
+	private boolean cerrado;
 	private ArrayList<Laboratorio> laboratorios = new ArrayList<Laboratorio>();
 	
 	LaboratorioServices laboratorioServices = ServicesFactory.getInstance().getLaboratorioServices();
 	EquipoServices equipoServices = ServicesFactory.getInstance().getEquipoServices();
+	SessionLogger logerServices = ServicesFactory.getInstance().getLoginServices();
+	NovedadServices novedadServices = ServicesFactory.getInstance().getNovedadServices();
 	
 	public ArrayList<Laboratorio> getLaboratorios() throws PersistenceException{
 		laboratorios = laboratorioServices.getLaboratorios();
@@ -37,7 +44,7 @@ public class LaboratorioBean {
 	
 	public void registrarLaboratorio() throws PersistenceException{
 		try {
-			laboratorioServices.registrarLaboratorio(nombre,horario,caracteristicas);
+			laboratorioServices.registrarLaboratorio(nombre,horario,caracteristicas,fechaCreacion,cerrado);
             FacesContext facesContext = FacesContext.getCurrentInstance();
 			facesContext.addMessage(null,new FacesMessage("Laboratorio agregado"));
             facesContext.getExternalContext().redirect("../registrarLaboratorio.xhtml");
@@ -64,6 +71,23 @@ public class LaboratorioBean {
 		}
 	}
 	
+	public void cerrarLaboratorio() throws PersistenceException{
+		try {
+			
+			ArrayList<Equipo> equipos = equipoServices.getEquipos();
+			for(int i=0;i<equipos.size();i++){
+				if(equipos.get(i).getIdLaboratorio()==laboratorio.getIdLaboratorio()) {
+					equipoServices.desasociar(equipos.get(i).getIdEquipo());
+				}
+			}
+			laboratorioServices.cerrarLaboratorio(laboratorio.getIdLaboratorio());;
+			novedadServices.registrarNovedad("Cierre Laboratorio","fue cerrado el laboratorio",logerServices.correo(),"finalizado","Laboratorio",laboratorio.getIdLaboratorio());
+			
+			
+		}catch(Exception e) {
+			throw e;
+		}
+	}
 	
 	
 	
@@ -111,4 +135,14 @@ public class LaboratorioBean {
 	public void setLaboratorio(Laboratorio laboratorio) {
 		this.laboratorio = laboratorio;
 	}
+
+	public LocalDate getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(LocalDate fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	
 }

@@ -78,9 +78,9 @@ public class EquipoBean extends BasePageBean{
 				if (elementos.get(i).getIdEquipo()==equipo.getIdEquipo()){
 					elementoServices.desasociar(elementos.get(i).getId());
 				}
+			}
 			equipoServices.darBajaEquipo(equipo.getIdEquipo(),"baja");
 			novedadServices.registrarNovedad("Baja Equipo","Se da de baja el equipo",logerServices.correo(),"finalizado","Equipo",equipo.getIdEquipo());
-			}
 		}catch(Exception e) {
 			throw e;
 		}

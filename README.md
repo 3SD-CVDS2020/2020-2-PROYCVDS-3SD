@@ -48,11 +48,27 @@
 **********************************************************
 
  * Nombre del proyecto
+ # 2020-2-CVDS-3SD
  * Período académico, nombre del curso, nombre de los integrantes, nombre del profesor, roles asignados (no olvidar que el profesor tuvo el rol de 'dueño de producto').
- * Descripción del producto.
+ * **Periodo Academico:** 2020-2
+ * **Nombre del curso:** Ciclos de vida y desarrollo de software
+ * **nombre de los integrantes:** Steven Garzon, Stiven, David Rivera,Sebastian Garcia
+ * **Profesor:** Julian Velasco
+ ## Roles Asignados
+ * **Julian Velasco** - *Product Owner*
+ * **Sebastian Garcia** - *Developer*
+ * **Steven Garzon** - *Developer*
+ * **David Rivera** - *Scrum Master*
+ * **Janer Stiven** - *Developer*
+
+ ### Descripción del producto.
 	* Descripción general.
-	* Manual de usuario.
-	* Imágenes y descripción de las funcionalidades más importantes.
+	El objetivo del producto es mantener un orden sobre los laboratorios del programa de ingenieria de sistemas
+	Los equipos que pertenecen a cada uno de estos laboratorios y los elementos que conforman los equipos, tambien
+	de mantener al tanto por medio de novedades y reportes, al personal que los administre
+ ## Manual de Usuario
+ Lo primero que se tiene que hacer es registrarse en la plataforma en la ventana de registro de usuario 
+ ![image](resources\ImagenesReadme\UsuarioRegistro.jpg)
  * Arquitectura y Diseño detallado:
 	* Modelo E-R.
 	* Diagrama de clases (hacerlo mediante ingeniería inversa)

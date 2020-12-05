@@ -1,5 +1,6 @@
 package edu.eci.cvds.Services.impl;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.google.inject.Inject;
@@ -25,10 +26,10 @@ public class LaboratorioServicesImpl implements LaboratorioServices{
 	}
 
 	@Override
-	public void registrarLaboratorio(String nombre, String horario, String caracteristicas)
+	public void registrarLaboratorio(String nombre, String horario, String caracteristicas,LocalDate fechaCreacion,boolean cerrado)
 			throws PersistenceException {
 		try {
-			laboratorioDao.registrarLaboratorio(nombre,horario,caracteristicas);
+			laboratorioDao.registrarLaboratorio(nombre,horario,caracteristicas,fechaCreacion,cerrado);
 		}catch(Exception e) {
 			throw new PersistenceException("No se puede registrar el laboratorio",e);
 		}
@@ -42,6 +43,16 @@ public class LaboratorioServicesImpl implements LaboratorioServices{
 		}catch(Exception e) {
 			throw new PersistenceException("No se puede obtener el ultimo ID",e);
 		}
+	}
+
+	@Override
+	public void cerrarLaboratorio(int idLaboratorio) throws PersistenceException {
+		try {
+			laboratorioDao.cerrarLaboratorio(idLaboratorio);
+		}catch(Exception e) {
+			throw new PersistenceException("No se pudo cerrar el laboratorio",e);
+		}
+		
 	}
 
 }

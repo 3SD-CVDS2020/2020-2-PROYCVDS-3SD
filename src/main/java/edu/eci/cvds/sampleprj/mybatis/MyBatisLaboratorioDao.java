@@ -1,5 +1,6 @@
 package edu.eci.cvds.sampleprj.mybatis;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.google.inject.Inject;
@@ -23,9 +24,9 @@ public class MyBatisLaboratorioDao implements LaboratorioDAO{
 	}
 
 	@Override
-	public void registrarLaboratorio(String nombre,String horario,String caracteristicas) throws PersistenceException {
+	public void registrarLaboratorio(String nombre,String horario,String caracteristicas,LocalDate fechaCreacion,boolean cerrado) throws PersistenceException {
 		try {
-			laboratorioMapper.registrarLaboratorio(nombre,horario,caracteristicas);
+			laboratorioMapper.registrarLaboratorio(nombre,horario,caracteristicas,fechaCreacion,cerrado);
 		}catch(Exception e) {
 			throw new PersistenceException("No se puede registrar el laboratorio",e);
 		}
@@ -39,5 +40,15 @@ public class MyBatisLaboratorioDao implements LaboratorioDAO{
 		}catch(Exception e) {
 			throw new PersistenceException("No se puede consultar el ultimo ID",e);
 		}
+	}
+
+	@Override
+	public void cerrarLaboratorio(int idLaboratorio) throws PersistenceException {
+		try {
+			laboratorioMapper.cerrarLaboratorio(idLaboratorio);
+		}catch(Exception e) {
+			throw new PersistenceException("No se puede cerrar el laboratorio",e);
+		}
+		
 	}
 }

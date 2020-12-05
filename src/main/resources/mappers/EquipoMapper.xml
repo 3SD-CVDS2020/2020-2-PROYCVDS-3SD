@@ -42,5 +42,9 @@
     <update id="darBajaEquipo">
     	UPDATE equipo SET estado=#{estado} WHERE idEquipo=#{idEquipo};
     </update>
+    
+    <update id="desasociar">
+   		UPDATE equipo SET idLaboratorio=0 WHERE idEquipo=#{idEquipo};
+   	</update>
 
 </mapper>
