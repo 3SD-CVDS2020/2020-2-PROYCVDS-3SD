@@ -71,5 +71,15 @@ public class MyBatisElementoDAO implements ElementoDAO{
 		
 	}
 
+	@Override
+	public void desasociar(int id) throws PersistenceException {
+		try {
+			elementoMapper.desasociar(id);
+		}catch(Exception e) {
+			throw e;
+		}
+		
+	}
+
 }
 

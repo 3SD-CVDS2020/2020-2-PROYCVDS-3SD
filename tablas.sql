@@ -18,11 +18,12 @@ CREATE TABLE usuario (
  CREATE TABLE novedad (
 	idNovedad INT NOT NULL, 
 	fecha DATE NOT NULL,
-	Titulo VARCHAR(20) NOT NULL,
-	Responsable  INT NOT NULL,
-	Detalle VARCHAR(40) NOT NULL, 
-	IdEquipo INT NOT NULL,
-	idLaboratorio INT NOT NULL
+	titulo VARCHAR(20) NOT NULL,
+	responsable  VARCHAR(20) NOT NULL,
+	detalle VARCHAR(40) NOT NULL,
+	tipo VARCHAR(20) NOT NULL,
+	estado VARCHAR(10) NOT NULL,
+	idElemNovedad INT NOT NULL
  ); 
  
  CREATE TABLE laboratorio (
@@ -50,8 +51,6 @@ ALTER TABLE novedad ADD CONSTRAINT pk_novedad PRIMARY KEY (idNovedad);
 ----------------FK----------------
 
 alter table equipo add constraint fk_equipo_laboratorio foreign key (idLaboratorio) references Laboratorio(idLaboratorio);
-ALTER TABLE novedad ADD CONSTRAINT FK_novedad_equipo FOREIGN KEY (idEquipo) REFERENCES equipo(idEquipo);
-ALTER TABLE novedad ADD CONSTRAINT FK_novedad_laboratorio FOREIGN KEY (idLaboratorio) REFERENCES laboratorio(idLaboratorio);
 
 ----------------UK----------------
 ALTER TABLE usuario ADD CONSTRAINT Uk_Usuario_correo UNIQUE (correo);

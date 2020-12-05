@@ -38,5 +38,9 @@
     <select id="getIdEquipo" resultType="int">
     	SELECT count(*) from equipo;
     </select>
+    
+    <update id="darBajaEquipo">
+    	UPDATE equipo SET estado=#{estado} WHERE idEquipo=#{idEquipo};
+    </update>
 
 </mapper>

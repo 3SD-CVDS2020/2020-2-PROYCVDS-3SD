@@ -17,4 +17,6 @@ public interface EquipoServices {
 	public ArrayList<Equipo> getEquiposDisponibles()throws PersistenceException;
 
 	public void asociarEquipo(int idEquipo, int ultimoID)throws PersistenceException;
+
+	public void darBajaEquipo(int idEquipo, String estado)throws PersistenceException;
 }

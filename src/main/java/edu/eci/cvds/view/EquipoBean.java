@@ -7,9 +7,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
+import edu.eci.cvds.Auth.SessionLogger;
 import edu.eci.cvds.Exceptions.PersistenceException;
 import edu.eci.cvds.Services.ElementoServices;
 import edu.eci.cvds.Services.EquipoServices;
+import edu.eci.cvds.Services.NovedadServices;
 import edu.eci.cvds.Services.ServicesFactory;
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
@@ -35,7 +37,8 @@ public class EquipoBean extends BasePageBean{
 
 	EquipoServices equipoServices = ServicesFactory.getInstance().getEquipoServices();
 	ElementoServices elementoServices = ServicesFactory.getInstance().getElementoServices();
-	
+	NovedadServices novedadServices = ServicesFactory.getInstance().getNovedadServices();
+	SessionLogger logerServices = ServicesFactory.getInstance().getLoginServices();
 	private ArrayList<Equipo> equipos;
 	
 	
@@ -67,6 +70,22 @@ public class EquipoBean extends BasePageBean{
 		}
 		return disponibles;
 	}
+	
+	public void darBajaEquipo() throws PersistenceException{
+		try {
+			ArrayList<Elemento> elementos= elementoServices.getElementos();
+			for(int i=0;i<elementos.size();i++) {
+				if (elementos.get(i).getIdEquipo()==equipo.getIdEquipo()){
+					elementoServices.desasociar(elementos.get(i).getId());
+				}
+			equipoServices.darBajaEquipo(equipo.getIdEquipo(),"baja");
+			novedadServices.registrarNovedad("Baja Equipo","Se da de baja el equipo",logerServices.correo(),"finalizado","Equipo",equipo.getIdEquipo());
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+	
 	
 	public ArrayList<Equipo> getEquipos()throws PersistenceException{
         ArrayList<Equipo> equipos =equipoServices.getEquipos();

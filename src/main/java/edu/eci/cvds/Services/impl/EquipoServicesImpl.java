@@ -69,4 +69,14 @@ public class EquipoServicesImpl implements EquipoServices{
 		
 		
 	}
+
+	@Override
+	public void darBajaEquipo(int idEquipo, String estado) throws PersistenceException {
+		try {
+			equipoDao.darBajaEquipo(idEquipo,estado);
+		}catch(Exception e) {
+			throw e;
+		}
+		
+	}
 }

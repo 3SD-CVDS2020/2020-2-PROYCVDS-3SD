@@ -7,14 +7,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
-
-import org.primefaces.PrimeFaces;
 
 import com.google.inject.Inject;
 
+import edu.eci.cvds.Auth.SessionLogger;
 import edu.eci.cvds.Exceptions.PersistenceException;
 import edu.eci.cvds.Services.ElementoServices;
+import edu.eci.cvds.Services.NovedadServices;
 import edu.eci.cvds.Services.ServicesFactory;
 import edu.eci.cvds.Services.UserServices;
 import edu.eci.cvds.entities.Elemento;
@@ -23,6 +22,10 @@ import edu.eci.cvds.entities.Elemento;
 @ManagedBean(name ="ElementoBean")
 @SessionScoped
 public class ElementoBean extends BasePageBean{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Inject
 	private UserServices userServices;
 	private int id;
@@ -37,26 +40,31 @@ public class ElementoBean extends BasePageBean{
 	private ArrayList<Elemento> cpus;
 	
 	private ElementoServices elementoServices = ServicesFactory.getInstance().getElementoServices();
+	NovedadServices novedadServices = ServicesFactory.getInstance().getNovedadServices();
+	SessionLogger logerServices = ServicesFactory.getInstance().getLoginServices();
 	private ArrayList<Elemento> elementos;
 	
 	
 	public void darBajaElemento() throws PersistenceException{
     	try{
-    		System.out.println("Entró");
-            elementoServices.darBajaElemento(elemento.getId(),"baja");
-            System.out.println("si lo hizo");
-            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage("Elemento dado de baja con exito"));
+    		if((elemento.getIdEquipo()==0)&&(!(elemento.getDescripcion().equals("baja")))) {
+    			elementoServices.darBajaElemento(elemento.getId(),"baja");
+    			novedadServices.registrarNovedad("Baja Elemento", "Se dio de baja al elemento",logerServices.correo(),"Finalizado","Elemento", id);
+    		}else {
+    			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"elemento actualmente asociado o dado de baja","Error"));
+    		}
 
         }catch (Exception e){
-            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"No se pudo dar de baja el Elemento","Error"));
+            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_ERROR,"No fue posible eliminar el elemento","Error"));
             throw e;
         }
     }
 	public void registrarElemento() throws PersistenceException{
-		elementoServices.registrarElemento(id,tipoElemento,marca,descripcion,idEquipo);
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
-	    String correoSession = (String) session.getAttribute("correo");
+		try {
+			elementoServices.registrarElemento(id,tipoElemento,marca,descripcion,idEquipo);
+		}catch(Exception e) {
+			throw e;
+		}
 	}
 	public ArrayList<Elemento> getElementos() throws PersistenceException {
         ArrayList<Elemento> elementos=new ArrayList<Elemento>();
@@ -161,5 +169,11 @@ public class ElementoBean extends BasePageBean{
 	}
 	public Elemento getElemento() {
 		return elemento;
+	}
+	public UserServices getUserServices() {
+		return userServices;
+	}
+	public void setUserServices(UserServices userServices) {
+		this.userServices = userServices;
 	}
 }

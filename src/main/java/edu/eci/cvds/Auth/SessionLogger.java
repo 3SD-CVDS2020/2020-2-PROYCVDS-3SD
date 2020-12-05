@@ -13,5 +13,7 @@ public interface SessionLogger {
 	boolean isLogged();
 
 	boolean isUser();
+	
+	String correo();
 
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                     
+<mapper namespace="edu.eci.cvds.sampleprj.mybatis.Mappers.NovedadMapper">
+
+    
+    <resultMap type='Novedad' id='NovedadResult'>
+        <id property='idNovedad' column='idNovedad'/>
+        <result property='fecha' column='fecha'/>
+        <result property='titulo' column='titulo'/>        
+        <result property='responsable' column='responsable'/>
+		<result property='detalle' column='detalle'/>
+		<result property='tipo' column='tipo'/>
+		<result property='estado' column='estado'/>
+		<result property='idElemNovedad' column='idElemNovedad'/>
+    </resultMap>
+  	<insert id="registrarNovedad" parameterType="Novedad">
+  		INSERT INTO novedad VALUES ((select count(*)+1 from novedad),#{fecha},#{titulo},#{responsable},#{detalle},#{tipo},#{estado},#{idElemNovedad});
+  	</insert>
+  	
+	<select id="getNovedades" resultMap="NovedadResult">
+		SELECT * FROM novedad;
+	</select>
+</mapper>

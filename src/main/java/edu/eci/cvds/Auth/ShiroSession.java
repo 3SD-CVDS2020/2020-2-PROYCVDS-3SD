@@ -18,7 +18,7 @@ import org.apache.shiro.subject.Subject;
 public class ShiroSession implements SessionLogger {
     @Inject
     private UserServices userServices;
-
+    private String correo;
 
     public UserServices getUserServices() {
         return userServices;
@@ -36,6 +36,7 @@ public class ShiroSession implements SessionLogger {
             UsernamePasswordToken token = new UsernamePasswordToken(correo,clave,remember);
             currentUser.getSession().setAttribute("correo",correo);
             currentUser.login(token);
+            
 
         } catch ( UnknownAccountException e ) {
         	JOptionPane.showMessageDialog(null,"Cuenta Incorrecta");
@@ -67,6 +68,12 @@ public class ShiroSession implements SessionLogger {
 	public boolean isUser() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public String correo() {
+		Subject currentUser = SecurityUtils.getSubject();
+		return currentUser.getSession().getHost();
 	}
 
 }

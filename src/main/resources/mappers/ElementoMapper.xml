@@ -25,6 +25,9 @@
    	</update>
    	
    	<update id="darBajaElemento">
-   		UPDATE elemento SET descripcion=#{descripcion} WHERE id=#{id} and idEquipo=0;
+   		UPDATE elemento SET descripcion=#{descripcion} idEquipo=0 WHERE id=#{id} and idEquipo=0;
+   	</update>
+   	<update id="desasociar">
+   		UPDATE elemento SET idEquipo=0 WHERE id=#{id};
    	</update>
 </mapper>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://java.sun.com/jsf/core"
+      lang="es">
+
+<h:head>
+	<title>AgregarNovedad</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <a href="menuNovedad.xhtml"><input style="background:orangered;color:white; margin-top: 0.5%" styleClass="customStyleButton" type="button" value="Volver"></input></a>
+</h:head>
+
+<h:body>
+	<header id="header">
+		<h1>Agregar Novedad</h1>
+	</header>
+	<h:form id="signup-form" method="post" action="#">
+	
+	<p:inputText type="descripcion" name="descripcion" id="titulo" placeholder="Titulo corto" value="#{NovedadBean.titulo}"/>
+	<p:inputText type="descripcion" name="descripcion" id="detalle" placeholder="Detalle" value="#{NovedadBean.detalle}"/>
+	<h:selectOneMenu id="novedad_estado" value="#{NovedadBean.estado}" style="width: 300x; height:50px" >
+		<f:selectItem itemLabel="Seleccion" itemValue="Seleccion" />
+		<f:selectItem itemLabel="Pendiente" itemValue="Pendiente" />
+		<f:selectItem itemLabel="En proceso" itemValue="En proceso" />
+		<f:selectItem itemLabel="Finalizada" itemValue="Finalizada" />
+		
+	</h:selectOneMenu>
+	<h:selectOneMenu id="novedad_tipo" value="#{NovedadBean.tipo}" style="width: 300x; height:50px">
+		<f:selectItem itemLabel="Seleccione el tipo de novedad" itemValue="Seleccione la categoría" />
+		<f:selectItem itemLabel="Elemento" itemValue="Elemento" />
+		<f:selectItem itemLabel="Equipo" itemValue="Equipo" />
+		<f:selectItem itemLabel="Laboratorio" itemValue="Laboratorio" />	
+	</h:selectOneMenu>
+	
+	<p:dataTable id="tablaDeElementos" var="Elemento" value="#{NovedadBean.getElementos()}" selectionMode="single"
+						 selection="#{NovedadBean.elemento}" rowKey="#{Elemento.id}">
+				<p:column style="color:black;" filterBy="#{Elemento.id}" sortBy="#{Elemento.id}" >
+					<f:facet name="header">
+						<h:outputText value="IdElemento" />
+					</f:facet>
+					<h:outputText value="#{Elemento.id}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="TipoElemento" />
+					</f:facet>
+					<h:outputText value="#{Elemento.tipoElemento}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Marca" />
+					</f:facet>
+					<h:outputText value="#{Elemento.marca}" />
+				</p:column>
+
+
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="descripcion" />
+					</f:facet>
+					<h:outputText value="#{Elemento.descripcion}" />
+				</p:column>
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Equipo" />
+					</f:facet>
+					<h:outputText value="#{Elemento.idEquipo}" />
+				</p:column>
+	</p:dataTable>
+	<p:dataTable id="tablaEquipos" var="Equipo" value="#{NovedadBean.getEquipos()}" selectionMode="single"
+						 selection="#{NovedadBean.equipo}" rowKey="#{Equipo.idEquipo}">
+				<p:column style="color:black;" filterBy="#{Equipo.idEquipo}" sortBy="#{Equipo.idEquipo}" >
+					<f:facet name="header">
+						<h:outputText value="Id Equipo" />
+					</f:facet>
+					<h:outputText value="#{Equipo.idEquipo}" />
+				</p:column>
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Nombre" />
+					</f:facet>
+					<h:outputText value="#{Equipo.nombre}" />
+				</p:column>
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Estado" />
+					</f:facet>
+					<h:outputText value="#{Equipo.estado}" />
+				</p:column>
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="En Uso" />
+					</f:facet>
+					<h:outputText value="#{Equipo.enUso}" />
+				</p:column>
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Laboratorio" />
+					</f:facet>
+					<h:outputText value="#{Equipo.idLaboratorio}" />
+				</p:column>
+				
+
+	</p:dataTable>
+	
+	<p:dataTable id="tablaLaboratorios" var="Laboratorio" value="#{NovedadBean.getLaboratorios()}" selectionMode="single"
+						 selection="#{NovedadBean.laboratorio}" rowKey="#{Laboratorio.idLaboratorio}">
+				<p:column style="color:black;" filterBy="#{Laboratorio.idLaboratorio}" sortBy="#{Laboratorio.idLaboratorio}" >
+					<f:facet name="header">
+						<h:outputText value="Laboratorio" />
+					</f:facet>
+					<h:outputText value="#{Laboratorio.idLaboratorio}" />
+				</p:column>
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Nombre" />
+					</f:facet>
+					<h:outputText value="#{Laboratorio.nombre}" />
+				</p:column>
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Horario" />
+					</f:facet>
+					<h:outputText value="#{Laboratorio.horario}" />
+				</p:column>
+
+				<p:column style="color:black;">
+					<f:facet name="header">
+						<h:outputText value="Caracteristicas" />
+					</f:facet>
+					<h:outputText value="#{Laboratorio.caracteristicas}" />
+				</p:column>
+
+	</p:dataTable>
+	<p:commandButton type="submit" value="Agregar" style="background:orangered;color:white; margin-top: 1% " styleClass="customStyleButton" action="#{NovedadBean.registrarNovedad()}"/>
+	</h:form>
+	
+
+
+</h:body>
+
+
+
+</html>

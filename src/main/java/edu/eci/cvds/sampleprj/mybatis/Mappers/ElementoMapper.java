@@ -21,4 +21,6 @@ public interface ElementoMapper {
 
 	public void darBajaElemento(@Param("id")int id,@Param("descripcion") String descripcion);
 
+	public void desasociar(@Param("id")int id);
+
 }

@@ -5,15 +5,18 @@ import com.google.inject.Injector;
 import edu.eci.cvds.sampleprj.ElementoDAO;
 import edu.eci.cvds.sampleprj.EquipoDAO;
 import edu.eci.cvds.sampleprj.LaboratorioDAO;
+import edu.eci.cvds.sampleprj.NovedadDAO;
 import edu.eci.cvds.sampleprj.UserDAO;
 import edu.eci.cvds.sampleprj.mybatis.MyBatisElementoDAO;
 import edu.eci.cvds.sampleprj.mybatis.MyBatisEquipoDao;
 import edu.eci.cvds.sampleprj.mybatis.MyBatisLaboratorioDao;
+import edu.eci.cvds.sampleprj.mybatis.MyBatisNovedadDao;
 import edu.eci.cvds.sampleprj.mybatis.MyBatisUserDao;
 import edu.eci.cvds.Auth.*;
 import edu.eci.cvds.Services.impl.ElementoServicesImpl;
 import edu.eci.cvds.Services.impl.EquipoServicesImpl;
 import edu.eci.cvds.Services.impl.LaboratorioServicesImpl;
+import edu.eci.cvds.Services.impl.NovedadServicesImpl;
 import edu.eci.cvds.Services.impl.UserServicesImpl;
 import org.mybatis.guice.XMLMyBatisModule;
 
@@ -41,6 +44,8 @@ public class ServicesFactory {
                 bind(EquipoServices.class).to(EquipoServicesImpl.class);
                 bind(LaboratorioDAO.class).to(MyBatisLaboratorioDao.class);
                 bind(LaboratorioServices.class).to(LaboratorioServicesImpl.class);
+                bind(NovedadDAO.class).to(MyBatisNovedadDao.class);
+                bind(NovedadServices.class).to(NovedadServicesImpl.class);
                 bind(UserServices.class).to(UserServicesImpl.class);
                 bind(SessionLogger.class).to(ShiroSession.class);
             }
@@ -81,5 +86,12 @@ public class ServicesFactory {
             optInjector=Optional.of(myBatisInjector("development","mybatis-config.xml"));
         }
         return optInjector.get().getInstance(LaboratorioServices.class);
+	}
+	public NovedadServices getNovedadServices() {
+		if(!optInjector.isPresent()) {
+			optInjector=Optional.of(myBatisInjector("development","mybatis-config.xml"));
+			
+		}
+		return optInjector.get().getInstance(NovedadServices.class);
 	}
 }

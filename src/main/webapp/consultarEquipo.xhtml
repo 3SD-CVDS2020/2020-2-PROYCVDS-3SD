@@ -60,6 +60,13 @@
 				</p:column>
 	
 			</p:dataTable>
+			<p:commandButton type="submit" value="Dar de baja" style="background:orangered;color:#fff; margin-top: 0.5%; margin-left: 49.5%" styleClass="customStyleButton" actionListener="#{EquipoBean.darBajaEquipo()}">
+				<p:confirm header="Confirmación" message="Esta seguro de eliminar el equipo?" icon="ui-icon-alert" />  
+			</p:commandButton> 
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">  
+			<p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />  
+			<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />  
+			</p:confirmDialog>
 			
 			
 	</h:form>

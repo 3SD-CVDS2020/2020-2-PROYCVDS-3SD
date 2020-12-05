@@ -69,5 +69,15 @@ public class ElementoServicesImpl implements ElementoServices {
 		}
 		
 	}
+
+	@Override
+	public void desasociar(int id) throws PersistenceException {
+		try {
+			elementoDao.desasociar(id);
+		}catch(Exception e) {
+			throw e;
+		}
+		
+	}
 		
 }

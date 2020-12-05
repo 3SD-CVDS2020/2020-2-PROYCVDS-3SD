@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      lang="es">
+     
+     
+<h:head>
+	<title>ConsultarNovedad</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+</h:head> 
+
+
+<h:body>
+	<div class="volver">
+		<a href="menuNovedad.xhtml"><input style="background:orangered;color:white; margin-top: 0.5%:margin-left:1%" styleClass="customStyleButton" type="button" value="Volver"></input></a>
+	</div>
+	<h:form>
+	<center>
+
+			<h2 style="color:orangered; font-size:100px ;">Novedades</h2>
+			<h:commandLink>
+				<h:graphicImage url="assets/img/logo.png"/>
+				<p:dataExporter type="xls" target="TablaNovedades" fileName="excelNovedades"/>
+			</h:commandLink>
+	</center>
+	<br></br>
+	<p:dataTable id="TablaNovedades" var="Novedad" value="#{NovedadBean.getNovedades()}"  style="margin-bottom: 1%;
+					width: 90%; margin-left: 5%; border-radius: 15px;" paginator="true"  rows="10"
+					 paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {PageLinks}  {LastPageLink} {RowsPerPageDropdown}"
+					 currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} agregadas"
+					 rowsPerPageTemplate="5,10,15,20">>
+
+
+			<p:column  style="color:black;"  filterBy="#{Novedad.idNovedad}" sortBy="#{Novedad.idNovedad}"  >
+				<f:facet name="header">
+					<h:outputText value="Id Novedad" />
+				</f:facet>
+				<h:outputText value="#{Novedad.idNovedad}" />
+			</p:column>
+			<p:column  style="color:black;"  filterBy="#{Novedad.titulo}" sortBy="#{Novedad.titulo}"  >
+				<f:facet name="header">
+					<h:outputText value="Titulo" />
+				</f:facet>
+				<h:outputText value="#{Novedad.titulo}" />
+			</p:column>
+			<p:column style="color:black;" filterBy="#{Novedad.detalle}" sortBy="#{Novedad.detalle}">
+				<f:facet name="header">
+					<h:outputText value="Detalle" />
+				</f:facet>
+				<h:outputText value="#{Novedad.detalle}" />
+			</p:column>
+
+			<p:column style="color:black;" filterBy="#{Novedad.fecha}" sortBy="#{Novedad.fecha}" >
+				<f:facet name="header">
+					<h:outputText value="Fecha" />
+				</f:facet>
+				<h:outputText value="#{Novedad.fecha}" />
+			</p:column>
+			<p:column style="color:black;" filterBy="#{Novedad.responsable}" sortBy="#{Novedad.responsable}">
+				<f:facet name="header">
+					<h:outputText value="Responsable" />
+				</f:facet>
+				<h:outputText value="#{Novedad.responsable}" />
+			</p:column>
+
+			<p:column style="color:black;" filterBy="#{Novedad.estado}" sortBy="#{Novedad.estado}" >
+				<f:facet name="header">
+					<h:outputText value="Estado" />
+				</f:facet>
+				<h:outputText value="#{Novedad.estado}" />
+			</p:column>
+
+			<p:column style="color:black;" filterBy="#{Novedad.tipo}" sortBy="#{Novedad.tipo}">
+				<f:facet name="header">
+					<h:outputText value="Tipo" />
+				</f:facet>
+				<h:outputText value="#{Novedad.tipo}" />
+			</p:column>
+
+			<p:column style="color:black;" filterBy="#{Novedad.idElemNovedad}" sortBy="#{Novedad.idElemNovedad}">
+				<f:facet name="header">
+					<h:outputText value="Elemento Asociado" />
+				</f:facet>
+				<h:outputText value="#{Novedad.idElemNovedad}" />
+			</p:column>
+
+		</p:dataTable>
+    
+    </h:form>
+	
+</h:body>
+      
+      
+      
+      
+</html>

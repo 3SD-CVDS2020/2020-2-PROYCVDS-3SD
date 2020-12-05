@@ -13,4 +13,5 @@ public interface ElementoDAO {
 	public void desvincularElementos(String tipoElemento, int idEquipo)throws PersistenceException;
 	public void asociarElemento(int id, int idEquipo)throws PersistenceException;
 	public void darBajaElemento(int id, String descripcion)throws PersistenceException;
+	public void desasociar(int id)throws PersistenceException;
 }
